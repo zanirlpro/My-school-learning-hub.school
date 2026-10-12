@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My School Learning Hub | Grades 1–6</title>
+<style>
+:root{--navy:#18324b;--blue:#2878b5;--paper:#fff;--bg:#f2f7fc;--ink:#203040}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+.hero{background:linear-gradient(125deg,#17324d,#2878b5);color:white;text-align:center;padding:32px 18px}
+.hero h1{font-size:clamp(28px,5vw,42px);margin:0 0 8px}.hero p{margin:0 auto;max-width:760px;font-size:17px}
+.wrap{max-width:1250px;margin:20px auto;padding:0 14px}
+.subjects{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;margin-bottom:18px}
+.subject-btn{border:2px solid transparent;border-radius:14px;background:white;padding:16px;text-align:left;cursor:pointer;color:var(--ink);box-shadow:0 4px 14px #17324d0c;font:inherit;min-height:98px}
+.subject-btn strong{display:block;font-size:17px;margin-bottom:5px}.subject-btn span{font-size:13px;color:#586c7d;line-height:1.4;display:block}
+.subject-btn.active{border-color:var(--blue);background:#eaf5ff}
+.frame-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;background:white;border-radius:14px 14px 0 0;padding:15px 18px}
+.frame-heading h2{margin:0;color:var(--navy);font-size:22px}.frame-heading p{margin:4px 0 0;color:#5d7183;font-size:14px}
+.subject-frame iframe{width:100%;height:1100px;border:0;border-radius:0 0 14px 14px;background:white;box-shadow:0 4px 14px #17324d10}
+.open-btn{border:0;background:var(--blue);color:white;border-radius:9px;padding:10px 12px;font-weight:bold;cursor:pointer;white-space:nowrap}
+footer{text-align:center;color:#607386;padding:25px 12px;font-size:13px}
+[hidden]{display:none!important}
+@media(max-width:550px){.frame-heading{align-items:flex-start;flex-direction:column}.subject-frame iframe{height:950px}.open-btn{width:100%}}
+</style>
+</head>
+<body>
+<header class="hero"><h1>🎓 My School Learning Hub</h1><p>Five learning websites in one place for Grades 1–6. Choose a subject to start learning, practice, and explore.</p></header>
+<main class="wrap">
+  <h2>Choose a subject</h2>
+  <div class="subjects" role="tablist" aria-label="School subjects">
+    <button class="subject-btn" data-subject="language" role="tab" aria-selected="true" onclick="showSubject('language')"><strong>📚 Language Arts</strong><span>Grades 1–6 · Reading & writing</span></button>
+    <button class="subject-btn" data-subject="math" role="tab" aria-selected="false" onclick="showSubject('math')"><strong>🧠 Math</strong><span>Grades 1–6 · Numbers & problem solving</span></button>
+    <button class="subject-btn" data-subject="science" role="tab" aria-selected="false" onclick="showSubject('science')"><strong>🔬 Science</strong><span>Grades 1–6 · Discover the world</span></button>
+    <button class="subject-btn" data-subject="religion" role="tab" aria-selected="false" onclick="showSubject('religion')"><strong>🌈 Religion & Worldviews</strong><span>Grades 1–6 · Beliefs & traditions</span></button>
+    <button class="subject-btn" data-subject="foreign" role="tab" aria-selected="false" onclick="showSubject('foreign')"><strong>🌍 Foreign Languages</strong><span>Grades 3–6 · Six languages</span></button>
+  </div>
+
+    <section class="subject-frame" id="section-foreign" hidden>
+      <div class="frame-heading"><div><h2>🌍 Foreign Languages</h2><p>Spanish, French, German, Mandarin, Latin & Italian</p></div><button class="open-btn" type="button" onclick="openSubject('foreign')">Open subject view ↗</button></div>
+      <iframe title="🌍 Foreign Languages" loading="lazy" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Foreign Languages | Grades 3–6&lt;/title&gt;
+&lt;style&gt;
+:root{--navy:#17324d;--blue:#2864dc;--teal:#13a89e;--gold:#ffc857;--ink:#203047;--muted:#617187;--paper:#f4f7fc;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--paper);color:var(--ink)}
+header{background:linear-gradient(125deg,#17324d,#2864dc 65%,#13a89e);color:white;padding:34px 20px 28px}
+.wrap{max-width:1100px;margin:auto}header .eyebrow{font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#d9f7ff}
+h1{font-size:clamp(2rem,5vw,3.4rem);margin:8px 0}header p{max-width:700px;line-height:1.6;margin:0;color:#eef6ff}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+button,select{font:inherit;cursor:pointer}nav button{border:1px solid #ffffff66;background:#ffffff17;color:white;padding:9px 14px;border-radius:999px;font-weight:700}nav button.active,nav button:hover{background:white;color:var(--navy)}
+main{max-width:1100px;margin:26px auto;padding:0 18px 40px}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+select{border:1px solid #ccd6e4;border-radius:12px;padding:10px 12px;background:white;color:var(--ink)}
+.pill{display:inline-block;border-radius:999px;background:#e4efff;color:#2351a6;padding:5px 10px;font-size:.78rem;font-weight:800}
+.intro{background:white;border:1px solid #e1e8f2;border-radius:20px;padding:22px;margin-bottom:20px;box-shadow:0 5px 18px #1a35500a}
+.intro h2{margin:8px 0;font-size:1.6rem}.intro p{line-height:1.6;color:var(--muted);margin-bottom:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:15px}
+.card{background:white;border:1px solid #e1e8f2;border-radius:18px;padding:19px;box-shadow:0 5px 18px #1a355008}
+.card h3{margin:0 0 5px;font-size:1.1rem}.word{font-size:1.7rem;font-weight:850;color:#235bd0;margin:12px 0 2px}.pron{font-size:.9rem;color:var(--muted);margin-bottom:10px}.meaning{font-weight:650}
+.card button,.action{border:0;border-radius:11px;padding:10px 13px;background:#e9f1ff;color:#214f9c;font-weight:800;margin-top:12px}
+.card button:hover,.action:hover{filter:brightness(.96)}
+.lesson-icon{font-size:1.8rem}.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:28px 0 13px}.section-title h2{margin:0;font-size:1.35rem}
+.quiz{background:#fff;border:1px solid #e1e8f2;border-radius:20px;padding:22px;margin-top:24px}
+.question{font-size:1.2rem;font-weight:800;margin:10px 0 15px}.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px}
+.answers button{border:1px solid #d6e0ee;background:white;border-radius:12px;padding:12px;text-align:left;font-weight:700;color:var(--ink)}
+.answers button:hover{border-color:var(--blue);background:#f0f5ff}
+.feedback{min-height:28px;font-weight:800;margin-top:13px}.score{color:#2864dc;font-weight:800}
+.small{color:var(--muted);font-size:.92rem;line-height:1.55}
+footer{text-align:center;color:var(--muted);padding:18px;font-size:.85rem}
+@media(max-width:600px){header{padding-top:25px}.intro,.quiz{padding:17px}.toolbar{align-items:flex-start}}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;&lt;div class=&quot;wrap&quot;&gt;
+&lt;div class=&quot;eyebrow&quot;&gt;Explore • Practice • Discover&lt;/div&gt;
+&lt;h1&gt;🌍 Foreign Languages&lt;/h1&gt;
+&lt;p&gt;A beginner-friendly language learning hub for &lt;strong&gt;Grades 3–6&lt;/strong&gt;. Learn useful words, practice greetings, and try a quick quiz in six languages.&lt;/p&gt;
+&lt;nav id=&quot;languageNav&quot; aria-label=&quot;Choose a language&quot;&gt;&lt;/nav&gt;
+&lt;/div&gt;&lt;/header&gt;
+&lt;main&gt;
+&lt;div class=&quot;toolbar&quot;&gt;
+&lt;div&gt;&lt;strong&gt;Choose your level:&lt;/strong&gt; &lt;select id=&quot;grade&quot;&gt;&lt;option value=&quot;3&quot;&gt;Grade 3&lt;/option&gt;&lt;option value=&quot;4&quot;&gt;Grade 4&lt;/option&gt;&lt;option value=&quot;5&quot;&gt;Grade 5&lt;/option&gt;&lt;option value=&quot;6&quot;&gt;Grade 6&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+&lt;div class=&quot;pill&quot;&gt;Grades 3–6 · Beginner lessons&lt;/div&gt;
+&lt;/div&gt;
+&lt;section class=&quot;intro&quot; id=&quot;intro&quot;&gt;&lt;/section&gt;
+&lt;div class=&quot;section-title&quot;&gt;&lt;h2&gt;📚 Today&#x27;s vocabulary&lt;/h2&gt;&lt;span class=&quot;small&quot;&gt;Use “Practice” to hear a word when your browser supports speech.&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;grid&quot; id=&quot;words&quot;&gt;&lt;/div&gt;
+&lt;section class=&quot;section-title&quot;&gt;&lt;h2&gt;💬 Try a phrase&lt;/h2&gt;&lt;/section&gt;
+&lt;div class=&quot;grid&quot; id=&quot;phrases&quot;&gt;&lt;/div&gt;
+&lt;section class=&quot;quiz&quot;&gt;
+&lt;div class=&quot;section-title&quot; style=&quot;margin-top:0&quot;&gt;&lt;h2&gt;🎯 Quick quiz&lt;/h2&gt;&lt;span class=&quot;score&quot; id=&quot;score&quot;&gt;Score: 0&lt;/span&gt;&lt;/div&gt;
+&lt;p class=&quot;small&quot;&gt;Pick the correct meaning. Each language has its own quiz.&lt;/p&gt;
+&lt;div id=&quot;quizArea&quot;&gt;&lt;/div&gt;
+&lt;button class=&quot;action&quot; id=&quot;nextQuestion&quot;&gt;Next question ↗&lt;/button&gt;
+&lt;div class=&quot;feedback&quot; id=&quot;feedback&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;/main&gt;
+&lt;footer&gt;Keep practicing a little each day. Pronunciations are approximate and can vary by region.&lt;/footer&gt;
+&lt;script&gt;
+const languages = {
+Spanish:{flag:&quot;🇪🇸&quot;,hello:&quot;Hola&quot;,thanks:&quot;Gracias&quot;,bye:&quot;Adiós&quot;,please:&quot;Por favor&quot;,name:&quot;Spanish&quot;,note:&quot;Spanish is spoken in Spain and across much of Latin America.&quot;,words:[
+[&quot;Hola&quot;,&quot;OH-lah&quot;,&quot;Hello&quot;],[&quot;Gracias&quot;,&quot;GRAH-see-ahs&quot;,&quot;Thank you&quot;],[&quot;Por favor&quot;,&quot;por fah-VOR&quot;,&quot;Please&quot;],[&quot;Agua&quot;,&quot;AH-gwah&quot;,&quot;Water&quot;],[&quot;Libro&quot;,&quot;LEE-broh&quot;,&quot;Book&quot;],[&quot;Amigo / amiga&quot;,&quot;ah-MEE-goh / ah-MEE-gah&quot;,&quot;Friend&quot;],[&quot;Uno, dos, tres&quot;,&quot;OO-noh, dohs, tres&quot;,&quot;One, two, three&quot;],[&quot;Buenos días&quot;,&quot;BWEH-nohs DEE-ahs&quot;,&quot;Good morning&quot;]],
+phrases:[[&quot;¿Cómo estás?&quot;,&quot;KOH-moh ehs-TAHS&quot;,&quot;How are you?&quot;],[&quot;Me llamo…&quot;,&quot;meh YAH-moh&quot;,&quot;My name is…&quot;],[&quot;¿Dónde está…?&quot;,&quot;DOHN-deh ehs-TAH&quot;,&quot;Where is…?&quot;]]},
+French:{flag:&quot;🇫🇷&quot;,hello:&quot;Bonjour&quot;,thanks:&quot;Merci&quot;,bye:&quot;Au revoir&quot;,please:&quot;S’il vous plaît&quot;,name:&quot;French&quot;,note:&quot;French is spoken in France, Canada, and many other places around the world.&quot;,words:[
+[&quot;Bonjour&quot;,&quot;bohn-ZHOOR&quot;,&quot;Hello / good morning&quot;],[&quot;Merci&quot;,&quot;mehr-SEE&quot;,&quot;Thank you&quot;],[&quot;S’il vous plaît&quot;,&quot;seel voo PLEH&quot;,&quot;Please&quot;],[&quot;Eau&quot;,&quot;oh&quot;,&quot;Water&quot;],[&quot;Livre&quot;,&quot;LEEVR&quot;,&quot;Book&quot;],[&quot;Ami / amie&quot;,&quot;ah-MEE&quot;,&quot;Friend&quot;],[&quot;Un, deux, trois&quot;,&quot;uhn, duh, trwah&quot;,&quot;One, two, three&quot;],[&quot;Au revoir&quot;,&quot;oh ruh-VWAHR&quot;,&quot;Goodbye&quot;]],
+phrases:[[&quot;Comment ça va ?&quot;,&quot;koh-MAHN sah VAH&quot;,&quot;How are you?&quot;],[&quot;Je m’appelle…&quot;,&quot;zhuh mah-PELL&quot;,&quot;My name is…&quot;],[&quot;Où est… ?&quot;,&quot;oo eh&quot;,&quot;Where is…?&quot;]]},
+German:{flag:&quot;🇩🇪&quot;,hello:&quot;Hallo&quot;,thanks:&quot;Danke&quot;,bye:&quot;Auf Wiedersehen&quot;,please:&quot;Bitte&quot;,name:&quot;German&quot;,note:&quot;German is spoken in Germany, Austria, Switzerland, and nearby regions.&quot;,words:[
+[&quot;Hallo&quot;,&quot;HAH-loh&quot;,&quot;Hello&quot;],[&quot;Danke&quot;,&quot;DAHN-kuh&quot;,&quot;Thank you&quot;],[&quot;Bitte&quot;,&quot;BIT-uh&quot;,&quot;Please / you&#x27;re welcome&quot;],[&quot;Wasser&quot;,&quot;VAH-ser&quot;,&quot;Water&quot;],[&quot;Buch&quot;,&quot;bookh&quot;,&quot;Book&quot;],[&quot;Freund / Freundin&quot;,&quot;froynt / FROYND-in&quot;,&quot;Friend&quot;],[&quot;Eins, zwei, drei&quot;,&quot;eyns, tsvy, dry&quot;,&quot;One, two, three&quot;],[&quot;Tschüss&quot;,&quot;choos&quot;,&quot;Bye&quot;]],
+phrases:[[&quot;Wie geht’s?&quot;,&quot;vee gayts&quot;,&quot;How are you?&quot;],[&quot;Ich heiße…&quot;,&quot;ikh HY-suh&quot;,&quot;My name is…&quot;],[&quot;Wo ist…?&quot;,&quot;voh ist&quot;,&quot;Where is…?&quot;]]},
+Mandarin:{flag:&quot;🇨🇳&quot;,hello:&quot;你好 (Nǐ hǎo)&quot;,thanks:&quot;谢谢 (Xièxie)&quot;,bye:&quot;再见 (Zàijiàn)&quot;,please:&quot;请 (Qǐng)&quot;,name:&quot;Mandarin Chinese&quot;,note:&quot;Mandarin uses tones: a change in pitch can change a word&#x27;s meaning. Pinyin helps learners read the sounds.&quot;,words:[
+[&quot;你好 · Nǐ hǎo&quot;,&quot;nee how&quot;,&quot;Hello&quot;],[&quot;谢谢 · Xièxie&quot;,&quot;shyeh-shyeh&quot;,&quot;Thank you&quot;],[&quot;请 · Qǐng&quot;,&quot;cheeng&quot;,&quot;Please&quot;],[&quot;水 · Shuǐ&quot;,&quot;shway&quot;,&quot;Water&quot;],[&quot;书 · Shū&quot;,&quot;shoo&quot;,&quot;Book&quot;],[&quot;朋友 · Péngyou&quot;,&quot;pung-yoh&quot;,&quot;Friend&quot;],[&quot;一、二、三 · Yī, èr, sān&quot;,&quot;ee, ar, sahn&quot;,&quot;One, two, three&quot;],[&quot;再见 · Zàijiàn&quot;,&quot;dzyeh-jyen&quot;,&quot;Goodbye&quot;]],
+phrases:[[&quot;你好吗？ Nǐ hǎo ma?&quot;,&quot;nee how mah&quot;,&quot;How are you?&quot;],[&quot;我叫… Wǒ jiào…&quot;,&quot;waw jyaow&quot;,&quot;My name is…&quot;],[&quot;在哪里？ Zài nǎlǐ?&quot;,&quot;dzye nah-lee&quot;,&quot;Where is it?&quot;]]},
+Latin:{flag:&quot;🏛️&quot;,hello:&quot;Salvē&quot;,thanks:&quot;Grātiās&quot;,bye:&quot;Valē&quot;,please:&quot;Amābō tē&quot;,name:&quot;Latin&quot;,note:&quot;Latin was spoken in ancient Rome and is still studied to understand history, science, and word roots.&quot;,words:[
+[&quot;Salvē&quot;,&quot;SAHL-way&quot;,&quot;Hello (to one person)&quot;],[&quot;Grātiās&quot;,&quot;GRAH-tee-ahs&quot;,&quot;Thank you&quot;],[&quot;Amābō tē&quot;,&quot;ah-MAH-boh tay&quot;,&quot;Please (literally, I will love you)&quot;],[&quot;Aqua&quot;,&quot;AH-kwah&quot;,&quot;Water&quot;],[&quot;Liber&quot;,&quot;LEE-ber&quot;,&quot;Book&quot;],[&quot;Amīcus / amīca&quot;,&quot;ah-MEE-koos / ah-MEE-kah&quot;,&quot;Friend&quot;],[&quot;Ūnus, duo, trēs&quot;,&quot;OO-noos, DOO-oh, trays&quot;,&quot;One, two, three&quot;],[&quot;Valē&quot;,&quot;wah-LAY&quot;,&quot;Goodbye&quot;]],
+phrases:[[&quot;Quid agis?&quot;,&quot;kwid AH-gis&quot;,&quot;How are you?&quot;],[&quot;Mihi nōmen est…&quot;,&quot;MEE-hee NOH-men est&quot;,&quot;My name is…&quot;],[&quot;Ubi est…?&quot;,&quot;OO-bee est&quot;,&quot;Where is…?&quot;]]},
+Italian:{flag:&quot;🇮🇹&quot;,hello:&quot;Ciao&quot;,thanks:&quot;Grazie&quot;,bye:&quot;Arrivederci&quot;,please:&quot;Per favore&quot;,name:&quot;Italian&quot;,note:&quot;Italian is spoken in Italy and parts of Switzerland. Many familiar music and food words come from Italian.&quot;,words:[
+[&quot;Ciao&quot;,&quot;CHOW&quot;,&quot;Hello / bye&quot;],[&quot;Grazie&quot;,&quot;GRAHT-see-eh&quot;,&quot;Thank you&quot;],[&quot;Per favore&quot;,&quot;pehr fah-VOH-reh&quot;,&quot;Please&quot;],[&quot;Acqua&quot;,&quot;AHK-kwah&quot;,&quot;Water&quot;],[&quot;Libro&quot;,&quot;LEE-broh&quot;,&quot;Book&quot;],[&quot;Amico / amica&quot;,&quot;ah-MEE-koh / ah-MEE-kah&quot;,&quot;Friend&quot;],[&quot;Uno, due, tre&quot;,&quot;OO-noh, DOO-eh, treh&quot;,&quot;One, two, three&quot;],[&quot;Arrivederci&quot;,&quot;ah-ree-veh-DEHR-chee&quot;,&quot;Goodbye&quot;]],
+phrases:[[&quot;Come stai?&quot;,&quot;KOH-meh sty&quot;,&quot;How are you?&quot;],[&quot;Mi chiamo…&quot;,&quot;mee KYAH-moh&quot;,&quot;My name is…&quot;],[&quot;Dov’è…?&quot;,&quot;doh-VEH&quot;,&quot;Where is…?&quot;]]}
+};
+let current=&quot;Spanish&quot;,qIndex=0,score=0,answered=false;
+const nav=document.getElementById(&quot;languageNav&quot;);
+Object.keys(languages).forEach((name,i)=&gt;{const b=document.createElement(&quot;button&quot;);b.textContent=languages[name].flag+&quot; &quot;+name;b.className=i===0?&quot;active&quot;:&quot;&quot;;b.onclick=()=&gt;choose(name);nav.appendChild(b)});
+function choose(name){current=name;qIndex=0;answered=false;[...nav.children].forEach(b=&gt;b.classList.toggle(&quot;active&quot;,b.textContent.includes(name)));render()}
+function render(){
+ const d=languages[current],grade=+document.getElementById(&quot;grade&quot;).value;
+ document.getElementById(&quot;intro&quot;).innerHTML=`&lt;span class=&quot;pill&quot;&gt;${d.flag} ${d.name}&lt;/span&gt;&lt;h2&gt;Welcome to ${d.name}!&lt;/h2&gt;&lt;p&gt;${d.note} &lt;strong&gt;Grade ${grade} goal:&lt;/strong&gt; ${grade===3?&quot;Learn greetings, classroom words, and numbers.&quot;:grade===4?&quot;Use polite phrases and describe familiar things.&quot;:grade===5?&quot;Build short sentences and ask simple questions.&quot;:&quot;Review vocabulary and combine phrases in short conversations.&quot;}&lt;/p&gt;`;
+ document.getElementById(&quot;words&quot;).innerHTML=d.words.map(w=&gt;`&lt;article class=&quot;card&quot;&gt;&lt;div class=&quot;lesson-icon&quot;&gt;🗣️&lt;/div&gt;&lt;div class=&quot;word&quot;&gt;${w[0]}&lt;/div&gt;&lt;div class=&quot;pron&quot;&gt;Say it: ${w[1]}&lt;/div&gt;&lt;div class=&quot;meaning&quot;&gt;${w[2]}&lt;/div&gt;&lt;button onclick=&quot;speakWord(${JSON.stringify(w[0])})&quot;&gt;🔊 Practice word&lt;/button&gt;&lt;/article&gt;`).join(&quot;&quot;);
+ document.getElementById(&quot;phrases&quot;).innerHTML=d.phrases.map(p=&gt;`&lt;article class=&quot;card&quot;&gt;&lt;h3&gt;${p[0]}&lt;/h3&gt;&lt;div class=&quot;pron&quot;&gt;Approx. pronunciation: ${p[1]}&lt;/div&gt;&lt;div class=&quot;meaning&quot;&gt;${p[2]}&lt;/div&gt;&lt;button onclick=&quot;speakWord(${JSON.stringify(p[0])})&quot;&gt;🔊 Practice phrase&lt;/button&gt;&lt;/article&gt;`).join(&quot;&quot;);
+ makeQuestion();
+}
+function speakWord(word){if(!(&quot;speechSynthesis&quot; in window)){alert(&quot;Speech playback is not supported in this browser. Try reading the pronunciation guide.&quot;);return}const u=new SpeechSynthesisUtterance(word);const map={Spanish:&quot;es-ES&quot;,French:&quot;fr-FR&quot;,German:&quot;de-DE&quot;,Mandarin:&quot;zh-CN&quot;,Latin:&quot;it-IT&quot;,Italian:&quot;it-IT&quot;};u.lang=map[current];speechSynthesis.cancel();speechSynthesis.speak(u)}
+function makeQuestion(){
+ const d=languages[current],item=d.words[qIndex%d.words.length],pool=d.words.filter(w=&gt;w[2]!==item[2]);
+ const wrong=pool[(qIndex+1)%pool.length][2],wrong2=pool[(qIndex+3)%pool.length][2];
+ const choices=[item[2],wrong,wrong2].sort(()=&gt;Math.random()-.5);
+ document.getElementById(&quot;quizArea&quot;).innerHTML=`&lt;div class=&quot;pill&quot;&gt;Question ${(qIndex%8)+1} of 8&lt;/div&gt;&lt;div class=&quot;question&quot;&gt;What does “${item[0]}” mean?&lt;/div&gt;&lt;div class=&quot;answers&quot;&gt;${choices.map(c=&gt;`&lt;button onclick=&quot;answerQuestion(${JSON.stringify(c)},${JSON.stringify(item[2])})&quot;&gt;${c}&lt;/button&gt;`).join(&quot;&quot;)}&lt;/div&gt;`;
+ document.getElementById(&quot;feedback&quot;).textContent=&quot;&quot;;answered=false;
+}
+function answerQuestion(choice,correct){if(answered)return;answered=true;const fb=document.getElementById(&quot;feedback&quot;);if(choice===correct){score++;fb.textContent=&quot;✅ Correct! Great work.&quot;;fb.style.color=&quot;#12805c&quot;}else{fb.textContent=&quot;Not quite — the answer is: &quot;+correct;fb.style.color=&quot;#b04a32&quot;}document.getElementById(&quot;score&quot;).textContent=&quot;Score: &quot;+score;document.querySelectorAll(&quot;.answers button&quot;).forEach(b=&gt;b.disabled=true)}
+document.getElementById(&quot;nextQuestion&quot;).onclick=()=&gt;{qIndex++;makeQuestion()};
+document.getElementById(&quot;grade&quot;).onchange=render;
+render();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="subject-frame" id="section-language" >
+      <div class="frame-heading"><div><h2>📚 Language Arts</h2><p>Reading, writing, grammar & vocabulary</p></div><button class="open-btn" type="button" onclick="openSubject('language')">Open subject view ↗</button></div>
+      <iframe title="📚 Language Arts" loading="lazy" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Language Arts Learning Hub | Grades 1–6&lt;/title&gt;
+&lt;style&gt;
+:root{--navy:#17324d;--blue:#2878b5;--sky:#eaf5ff;--gold:#ffd166;--ink:#203040;--paper:#fff;--green:#2f855a}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f8fc;color:var(--ink);line-height:1.55}
+header{background:linear-gradient(120deg,#17324d,#2878b5);color:white;padding:38px 20px;text-align:center}
+header h1{font-size:clamp(2rem,5vw,3.2rem);margin:0 0 8px}header p{margin:0 auto;max-width:700px;font-size:1.1rem}
+nav{position:sticky;top:0;z-index:5;background:white;box-shadow:0 2px 8px #0001;padding:10px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+nav a{color:var(--navy);font-weight:bold;text-decoration:none;padding:8px 12px;border-radius:20px}nav a:hover{background:var(--sky)}
+main{max-width:1100px;margin:25px auto;padding:0 16px}.intro,.grade-card,.activity,.tool-card{background:white;border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 5px 18px #17324d0d}
+.intro{border-left:6px solid var(--gold)}h2{color:var(--navy);margin-top:0}h3{color:#23618f}
+.grade-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.grade-card{margin:0;border-top:5px solid var(--blue)}.grade-card:nth-child(3n+2){border-top-color:#e5a823}.grade-card:nth-child(3n){border-top-color:#48a078}
+.tag{display:inline-block;background:var(--sky);color:#21567c;border-radius:12px;padding:3px 9px;font-size:.85rem;margin:3px}
+ul{padding-left:22px}.lesson{background:#f8fbff;border-radius:12px;padding:12px 15px;margin-top:12px}
+button{background:var(--blue);color:white;border:0;border-radius:10px;padding:10px 15px;font-weight:bold;cursor:pointer;font-size:1rem}button:hover{filter:brightness(.92)}
+input,select,textarea{font:inherit;padding:10px;border:1px solid #b7c7d6;border-radius:9px;max-width:100%}
+.question{padding:14px 0;border-bottom:1px solid #e4ebf2}.feedback{font-weight:bold;margin-top:10px}.correct{color:var(--green)}.wrong{color:#b83232}
+.word-box{background:#fff8df;border-radius:12px;padding:14px;margin:10px 0}
+footer{text-align:center;padding:25px;background:var(--navy);color:white;margin-top:35px}
+.small{font-size:.92rem;color:#526578}.activity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.grade-card{transition:transform .15s,box-shadow .15s}.grade-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px #17324d16}.grade-card.selected{outline:3px solid #2878b5;background:#fafdff}.grade-pick{display:block;width:100%;text-align:left;background:#f7fbff;color:var(--navy);border:1px solid #d6e5f1;margin:12px 0 0}.grade-pick:hover{background:#eaf5ff}.teach-panel{margin-top:20px;background:#eaf5ff;border-radius:16px;padding:22px;border:1px solid #c9e3f8}.teach-panel h3{margin-bottom:6px}.teach-panel .mini-task{background:white;border-radius:12px;padding:14px;margin-top:12px}.teach-panel .lesson-step{margin:10px 0;padding:12px;background:white;border-radius:10px}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;
+  &lt;h1&gt;📚 Language Arts Learning Hub&lt;/h1&gt;
+  &lt;p&gt;Explore reading, writing, grammar, vocabulary, spelling, and speaking skills for Grades 1–6.&lt;/p&gt;
+&lt;/header&gt;
+&lt;nav&gt;
+  &lt;a href=&quot;#grades&quot;&gt;Choose a Grade&lt;/a&gt;&lt;a href=&quot;#skills&quot;&gt;Language Arts Skills&lt;/a&gt;&lt;a href=&quot;#practice&quot;&gt;Practice Quiz&lt;/a&gt;&lt;a href=&quot;#writing&quot;&gt;Writing Studio&lt;/a&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+&lt;section class=&quot;intro&quot;&gt;
+&lt;h2&gt;Welcome, learners!&lt;/h2&gt;
+&lt;p&gt;Choose your grade and press “Teach me Grade …” to open a lesson with explanations, examples, and an activity. You can also try the practice quiz and use the writing studio to plan your own story.&lt;/p&gt;
+&lt;p class=&quot;small&quot;&gt;For students, families, and teachers. Activities can be completed on this page without creating an account.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section id=&quot;grades&quot;&gt;
+&lt;h2&gt;Choose Your Grade&lt;/h2&gt;
+&lt;div class=&quot;grade-grid&quot;&gt;
+&lt;article class=&quot;grade-card&quot;&gt;&lt;h2&gt;Grade 1 🌱&lt;/h2&gt;&lt;span class=&quot;tag&quot;&gt;Beginning reader&lt;/span&gt;&lt;div class=&quot;lesson&quot;&gt;&lt;h3&gt;Learn&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Recognize letters and their sounds.&lt;/li&gt;&lt;li&gt;Read short sentences and simple stories.&lt;/li&gt;&lt;li&gt;Use capital letters and periods.&lt;/li&gt;&lt;li&gt;Practice common sight words and rhyming words.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Try it&lt;/h3&gt;&lt;p&gt;Finish the sentence: “The cat is ___.” Choose a word that makes sense, such as &lt;b&gt;happy&lt;/b&gt; or &lt;b&gt;small&lt;/b&gt;.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;grade-pick&quot; type=&quot;button&quot; onclick=&quot;teachGrade(1)&quot;&gt;Teach me Grade 1 →&lt;/button&gt;&lt;/article&gt;
+&lt;article class=&quot;grade-card&quot;&gt;&lt;h2&gt;Grade 2 🌿&lt;/h2&gt;&lt;span class=&quot;tag&quot;&gt;Growing reader&lt;/span&gt;&lt;div class=&quot;lesson&quot;&gt;&lt;h3&gt;Learn&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Find the main idea and key details.&lt;/li&gt;&lt;li&gt;Use nouns, verbs, and adjectives.&lt;/li&gt;&lt;li&gt;Write complete sentences and short paragraphs.&lt;/li&gt;&lt;li&gt;Spell common patterns and contractions.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Try it&lt;/h3&gt;&lt;p&gt;Make this sentence more interesting: “The dog ran.” Add an adjective or tell where the dog ran.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;grade-pick&quot; type=&quot;button&quot; onclick=&quot;teachGrade(2)&quot;&gt;Teach me Grade 2 →&lt;/button&gt;&lt;/article&gt;
+&lt;article class=&quot;grade-card&quot;&gt;&lt;h2&gt;Grade 3 🌳&lt;/h2&gt;&lt;span class=&quot;tag&quot;&gt;Confident reader&lt;/span&gt;&lt;div class=&quot;lesson&quot;&gt;&lt;h3&gt;Learn&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Summarize stories and identify character traits.&lt;/li&gt;&lt;li&gt;Use commas in dates and lists.&lt;/li&gt;&lt;li&gt;Understand prefixes, suffixes, and context clues.&lt;/li&gt;&lt;li&gt;Write organized paragraphs with a topic sentence.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Try it&lt;/h3&gt;&lt;p&gt;Write a 3-sentence summary of a book or story you know.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;grade-pick&quot; type=&quot;button&quot; onclick=&quot;teachGrade(3)&quot;&gt;Teach me Grade 3 →&lt;/button&gt;&lt;/article&gt;
+&lt;article class=&quot;grade-card&quot;&gt;&lt;h2&gt;Grade 4 🦉&lt;/h2&gt;&lt;span class=&quot;tag&quot;&gt;Fluent reader&lt;/span&gt;&lt;div class=&quot;lesson&quot;&gt;&lt;h3&gt;Learn&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Compare themes, characters, and points of view.&lt;/li&gt;&lt;li&gt;Use quotation marks in dialogue.&lt;/li&gt;&lt;li&gt;Recognize similes, metaphors, and personification.&lt;/li&gt;&lt;li&gt;Plan a multi-paragraph piece with supporting details.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Try it&lt;/h3&gt;&lt;p&gt;Write a simile comparing something to an object in nature.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;grade-pick&quot; type=&quot;button&quot; onclick=&quot;teachGrade(4)&quot;&gt;Teach me Grade 4 →&lt;/button&gt;&lt;/article&gt;
+&lt;article class=&quot;grade-card&quot;&gt;&lt;h2&gt;Grade 5 🚀&lt;/h2&gt;&lt;span class=&quot;tag&quot;&gt;Critical thinker&lt;/span&gt;&lt;div class=&quot;lesson&quot;&gt;&lt;h3&gt;Learn&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Use evidence to support an inference.&lt;/li&gt;&lt;li&gt;Identify fact, opinion, and an author&#x27;s purpose.&lt;/li&gt;&lt;li&gt;Use conjunctions and varied sentence structures.&lt;/li&gt;&lt;li&gt;Write opinion and informative essays with clear organization.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Try it&lt;/h3&gt;&lt;p&gt;State an opinion about a book, then give two reasons and one example.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;grade-pick&quot; type=&quot;button&quot; onclick=&quot;teachGrade(5)&quot;&gt;Teach me Grade 5 →&lt;/button&gt;&lt;/article&gt;
+&lt;article class=&quot;grade-card&quot;&gt;&lt;h2&gt;Grade 6 🔭&lt;/h2&gt;&lt;span class=&quot;tag&quot;&gt;Independent reader&lt;/span&gt;&lt;div class=&quot;lesson&quot;&gt;&lt;h3&gt;Learn&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Analyze theme, tone, figurative language, and text structure.&lt;/li&gt;&lt;li&gt;Evaluate claims and evidence in informational texts.&lt;/li&gt;&lt;li&gt;Use precise vocabulary and edit for grammar.&lt;/li&gt;&lt;li&gt;Write developed arguments, narratives, and research reports.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Try it&lt;/h3&gt;&lt;p&gt;Choose a claim about a school topic and list evidence that could support it.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;grade-pick&quot; type=&quot;button&quot; onclick=&quot;teachGrade(6)&quot;&gt;Teach me Grade 6 →&lt;/button&gt;&lt;/article&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;teachPanel&quot; class=&quot;teach-panel&quot; hidden aria-live=&quot;polite&quot;&gt;
+  &lt;h2 id=&quot;teachTitle&quot;&gt;Grade lesson&lt;/h2&gt;
+  &lt;p id=&quot;teachIntro&quot;&gt;&lt;/p&gt;
+  &lt;div id=&quot;teachContent&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mini-task&quot;&gt;
+    &lt;h3&gt;🎯 Your turn&lt;/h3&gt;
+    &lt;p id=&quot;taskQuestion&quot;&gt;&lt;/p&gt;
+    &lt;div id=&quot;taskChoices&quot;&gt;&lt;/div&gt;
+    &lt;p id=&quot;taskFeedback&quot; class=&quot;feedback&quot;&gt;&lt;/p&gt;
+    &lt;button id=&quot;nextLesson&quot; type=&quot;button&quot; onclick=&quot;nextLessonStep()&quot;&gt;Next lesson →&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/section&gt;
+
+&lt;section id=&quot;skills&quot; class=&quot;activity&quot;&gt;
+&lt;h2&gt;Language Arts Skills&lt;/h2&gt;
+&lt;div class=&quot;activity-grid&quot;&gt;
+&lt;div&gt;&lt;h3&gt;📖 Reading&lt;/h3&gt;&lt;p&gt;Practice phonics, fluency, comprehension, main idea, summaries, theme, and making inferences.&lt;/p&gt;&lt;/div&gt;
+&lt;div&gt;&lt;h3&gt;✍️ Writing&lt;/h3&gt;&lt;p&gt;Build stories, paragraphs, essays, descriptions, opinions, and informative reports.&lt;/p&gt;&lt;/div&gt;
+&lt;div&gt;&lt;h3&gt;🔤 Grammar&lt;/h3&gt;&lt;p&gt;Learn parts of speech, punctuation, capitalization, verb tense, and sentence structure.&lt;/p&gt;&lt;/div&gt;
+&lt;div&gt;&lt;h3&gt;🧠 Vocabulary &amp; Spelling&lt;/h3&gt;&lt;p&gt;Explore word meanings, synonyms, antonyms, word parts, context clues, and spelling patterns.&lt;/p&gt;&lt;/div&gt;
+&lt;div&gt;&lt;h3&gt;🗣️ Speaking &amp; Listening&lt;/h3&gt;&lt;p&gt;Practice explaining ideas clearly, asking questions, listening carefully, and taking turns.&lt;/p&gt;&lt;/div&gt;
+&lt;div&gt;&lt;h3&gt;🔎 Research&lt;/h3&gt;&lt;p&gt;Ask questions, take notes, compare sources, and organize information in your own words.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section id=&quot;practice&quot; class=&quot;activity&quot;&gt;
+&lt;h2&gt;Quick Practice Quiz&lt;/h2&gt;
+&lt;p&gt;Choose an answer for each question, then press &lt;b&gt;Check Answers&lt;/b&gt;.&lt;/p&gt;
+&lt;form id=&quot;quiz&quot;&gt;
+&lt;div class=&quot;question&quot;&gt;&lt;p&gt;&lt;b&gt;1. Which word is a noun?&lt;/b&gt;&lt;/p&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q1&quot; value=&quot;a&quot;&gt; quickly&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q1&quot; value=&quot;b&quot;&gt; garden&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q1&quot; value=&quot;c&quot;&gt; bright&lt;/label&gt;&lt;/div&gt;
+&lt;div class=&quot;question&quot;&gt;&lt;p&gt;&lt;b&gt;2. Which sentence is punctuated correctly?&lt;/b&gt;&lt;/p&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q2&quot; value=&quot;a&quot;&gt; where is my book.&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q2&quot; value=&quot;b&quot;&gt; Where is my book?&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q2&quot; value=&quot;c&quot;&gt; where is my book?&lt;/label&gt;&lt;/div&gt;
+&lt;div class=&quot;question&quot;&gt;&lt;p&gt;&lt;b&gt;3. What is a synonym for “tiny”?&lt;/b&gt;&lt;/p&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q3&quot; value=&quot;a&quot;&gt; enormous&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q3&quot; value=&quot;b&quot;&gt; little&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q3&quot; value=&quot;c&quot;&gt; noisy&lt;/label&gt;&lt;/div&gt;
+&lt;div class=&quot;question&quot;&gt;&lt;p&gt;&lt;b&gt;4. What is the main idea?&lt;/b&gt;&lt;br&gt;&lt;span class=&quot;small&quot;&gt;“Bees visit flowers to collect nectar. As they move between flowers, they also help plants make seeds.”&lt;/span&gt;&lt;/p&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q4&quot; value=&quot;a&quot;&gt; Bees help plants while collecting food.&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q4&quot; value=&quot;b&quot;&gt; All flowers are yellow.&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q4&quot; value=&quot;c&quot;&gt; Bees sleep all day.&lt;/label&gt;&lt;/div&gt;
+&lt;div class=&quot;question&quot;&gt;&lt;p&gt;&lt;b&gt;5. Which word is an adjective?&lt;/b&gt;&lt;/p&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q5&quot; value=&quot;a&quot;&gt; jump&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q5&quot; value=&quot;b&quot;&gt; softly&lt;/label&gt;&lt;br&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;q5&quot; value=&quot;c&quot;&gt; colorful&lt;/label&gt;&lt;/div&gt;
+&lt;button type=&quot;button&quot; onclick=&quot;checkQuiz()&quot;&gt;Check Answers&lt;/button&gt; &lt;button type=&quot;reset&quot; onclick=&quot;document.getElementById(&#x27;quizResult&#x27;).textContent=&#x27;&#x27;&quot;&gt;Try Again&lt;/button&gt;
+&lt;div id=&quot;quizResult&quot; class=&quot;feedback&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+&lt;/form&gt;
+&lt;/section&gt;
+
+&lt;section id=&quot;writing&quot; class=&quot;activity&quot;&gt;
+&lt;h2&gt;Writing Studio ✨&lt;/h2&gt;
+&lt;p&gt;Use these prompts to plan a story or paragraph. Your writing stays in this page while it is open; copy it somewhere safe if you want to keep it.&lt;/p&gt;
+&lt;label for=&quot;prompt&quot;&gt;&lt;b&gt;Choose a writing prompt:&lt;/b&gt;&lt;/label&gt;&lt;br&gt;&lt;br&gt;
+&lt;select id=&quot;prompt&quot; onchange=&quot;setPrompt()&quot;&gt;&lt;option value=&quot;Imagine you discover a hidden door at your school. What is behind it?&quot;&gt;A mysterious door&lt;/option&gt;&lt;option value=&quot;Describe a place where you feel curious and ready to explore.&quot;&gt;A place to explore&lt;/option&gt;&lt;option value=&quot;Should students have more time for reading? Give reasons for your opinion.&quot;&gt;Share an opinion&lt;/option&gt;&lt;option value=&quot;Explain how to do something you are good at, step by step.&quot;&gt;Teach a skill&lt;/option&gt;&lt;/select&gt;
+&lt;div class=&quot;word-box&quot; id=&quot;promptText&quot;&gt;Imagine you discover a hidden door at your school. What is behind it?&lt;/div&gt;
+&lt;label for=&quot;draft&quot;&gt;&lt;b&gt;Your writing:&lt;/b&gt;&lt;/label&gt;&lt;br&gt;&lt;br&gt;
+&lt;textarea id=&quot;draft&quot; rows=&quot;8&quot; style=&quot;width:100%&quot; placeholder=&quot;Start writing here...&quot;&gt;&lt;/textarea&gt;
+&lt;p id=&quot;wordCount&quot; class=&quot;small&quot;&gt;0 words&lt;/p&gt;
+&lt;button type=&quot;button&quot; onclick=&quot;copyDraft()&quot;&gt;Copy Writing&lt;/button&gt; &lt;button type=&quot;button&quot; onclick=&quot;clearDraft()&quot;&gt;Clear Writing&lt;/button&gt;
+&lt;div id=&quot;writeFeedback&quot; class=&quot;feedback&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class=&quot;activity&quot;&gt;
+&lt;h2&gt;Daily Reading Challenge&lt;/h2&gt;
+&lt;ul&gt;&lt;li&gt;Read for 10–20 minutes.&lt;/li&gt;&lt;li&gt;Write down one new word and what you think it means.&lt;/li&gt;&lt;li&gt;Describe the most important thing you learned or what happened.&lt;/li&gt;&lt;li&gt;Ask one question about the text.&lt;/li&gt;&lt;/ul&gt;
+&lt;p&gt;&lt;b&gt;Remember:&lt;/b&gt; Great readers and writers improve a little bit with practice every day!&lt;/p&gt;
+&lt;/section&gt;
+&lt;/main&gt;
+&lt;footer&gt;&lt;p&gt;📚 Language Arts Learning Hub · Grades 1–6&lt;/p&gt;&lt;p class=&quot;small&quot; style=&quot;color:#e1edf7&quot;&gt;Learn a word. Read a page. Tell your story.&lt;/p&gt;&lt;/footer&gt;
+&lt;script&gt;
+function checkQuiz(){
+ const answers={q1:&#x27;b&#x27;,q2:&#x27;b&#x27;,q3:&#x27;b&#x27;,q4:&#x27;a&#x27;,q5:&#x27;c&#x27;};
+ let score=0,answered=0;
+ for(const [q,a] of Object.entries(answers)){
+  const picked=document.querySelector(&#x27;input[name=&quot;&#x27;+q+&#x27;&quot;]:checked&#x27;);
+  if(picked){answered++;if(picked.value===a)score++;}
+ }
+ const out=document.getElementById(&#x27;quizResult&#x27;);
+ out.className=&#x27;feedback &#x27;+(score===5?&#x27;correct&#x27;:&#x27;&#x27;);
+ out.textContent=&#x27;You scored &#x27;+score+&#x27; out of 5. &#x27;+(answered&lt;5?&#x27;You answered &#x27;+answered+&#x27; of 5 questions. &#x27;:&#x27;&#x27;)+(score===5?&#x27;Excellent work!&#x27;:score&gt;=3?&#x27;Nice effort! Review any questions you missed and try again.&#x27;:&#x27;Keep practicing—you can do it!&#x27;);
+}
+function setPrompt(){document.getElementById(&#x27;promptText&#x27;).textContent=document.getElementById(&#x27;prompt&#x27;).value;}
+const draft=document.getElementById(&#x27;draft&#x27;);
+draft.addEventListener(&#x27;input&#x27;,()=&gt;{const t=draft.value.trim();document.getElementById(&#x27;wordCount&#x27;).textContent=(t?t.split(/\s+/).length:0)+&#x27; words&#x27;;});
+function copyDraft(){
+ const t=draft.value;
+ const f=document.getElementById(&#x27;writeFeedback&#x27;);
+ if(!t.trim()){f.textContent=&#x27;Write something first, then copy it.&#x27;;f.className=&#x27;feedback wrong&#x27;;return;}
+ if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=&gt;{f.textContent=&#x27;Writing copied!&#x27;;f.className=&#x27;feedback correct&#x27;;}).catch(()=&gt;{draft.select();f.textContent=&#x27;Select the highlighted writing and copy it.&#x27;;f.className=&#x27;feedback&#x27;;});}
+ else{draft.select();f.textContent=&#x27;Select the highlighted writing and copy it.&#x27;;f.className=&#x27;feedback&#x27;;}
+}
+function clearDraft(){draft.value=&#x27;&#x27;;document.getElementById(&#x27;wordCount&#x27;).textContent=&#x27;0 words&#x27;;document.getElementById(&#x27;writeFeedback&#x27;).textContent=&#x27;&#x27;;}
+
+const gradeLessons = {
+1:{
+ title:&quot;Grade 1 Language Arts&quot;,
+ intro:&quot;In Grade 1, you build the foundations of reading and writing. Let&#x27;s learn one small step at a time.&quot;,
+ lessons:[
+  {title:&quot;1. Letters and sounds&quot;,body:&quot;Letters represent sounds. Knowing the sounds helps you read new words.&quot;,example:&quot;The word sun begins with the /s/ sound. Say: sss-un → sun.&quot;,task:&quot;Which word begins with the same sound as sun?&quot;,choices:[&quot;moon&quot;,&quot;sock&quot;,&quot;top&quot;],answer:1,why:&quot;Sock begins with the /s/ sound, just like sun.&quot;},
+  {title:&quot;2. Make a complete sentence&quot;,body:&quot;A sentence tells a complete idea. Start with a capital letter and usually end with a period, question mark, or exclamation mark.&quot;,example:&quot;The bird can fly.&quot;,task:&quot;Which is written as a complete sentence?&quot;,choices:[&quot;the little dog&quot;,&quot;The dog runs.&quot;,&quot;runs fast&quot;],answer:1,why:&quot;“The dog runs.” has a complete idea, a capital letter, and a period.&quot;},
+  {title:&quot;3. Nouns and verbs&quot;,body:&quot;A noun names a person, place, animal, or thing. A verb tells an action or what someone or something does.&quot;,example:&quot;In “The rabbit hops,” rabbit is a noun and hops is a verb.&quot;,task:&quot;Which word is the action verb in “I clap my hands”?&quot;,choices:[&quot;I&quot;,&quot;clap&quot;,&quot;hands&quot;],answer:1,why:&quot;Clap tells the action.&quot;}
+ ]},
+2:{
+ title:&quot;Grade 2 Language Arts&quot;,
+ intro:&quot;In Grade 2, you read longer stories, describe ideas, and make your sentences clearer.&quot;,
+ lessons:[
+  {title:&quot;1. Main idea and details&quot;,body:&quot;The main idea is what a text is mostly about. Details give information that supports it.&quot;,example:&quot;“Mia waters the plants. She pulls weeds. Soon, flowers bloom.” Main idea: Mia cares for a garden.&quot;,task:&quot;A paragraph tells how penguins swim, dive, and catch fish. What is it mostly about?&quot;,choices:[&quot;How penguins move and find food&quot;,&quot;The color of every bird&quot;,&quot;How to bake bread&quot;],answer:0,why:&quot;The details are all about how penguins move and find food.&quot;},
+  {title:&quot;2. Nouns, verbs, and adjectives&quot;,body:&quot;Nouns name things, verbs show actions, and adjectives describe nouns.&quot;,example:&quot;“The fluffy cat sleeps.” Cat is a noun, sleeps is a verb, and fluffy is an adjective.&quot;,task:&quot;Which word describes the cat in “The fluffy cat sleeps”?&quot;,choices:[&quot;cat&quot;,&quot;sleeps&quot;,&quot;fluffy&quot;],answer:2,why:&quot;Fluffy describes what the cat is like.&quot;},
+  {title:&quot;3. Build a strong paragraph&quot;,body:&quot;A paragraph can begin with a topic sentence, add details, and finish with a closing sentence.&quot;,example:&quot;“I like our park. It has tall trees and a fun playground. It is a great place to visit.”&quot;,task:&quot;Which sentence would be a good topic sentence for a paragraph about your pet?&quot;,choices:[&quot;My pet makes me smile.&quot;,&quot;Yesterday was Tuesday.&quot;,&quot;The end.&quot;],answer:0,why:&quot;It introduces the main idea: your pet.&quot;}
+ ]},
+3:{
+ title:&quot;Grade 3 Language Arts&quot;,
+ intro:&quot;In Grade 3, you explain what you read, organize paragraphs, and explore how words work.&quot;,
+ lessons:[
+  {title:&quot;1. Summarize a story&quot;,body:&quot;A summary tells the most important events or ideas in your own words. Leave out tiny details.&quot;,example:&quot;A child loses a library book, searches the house, and finds it under a chair. Summary: The child searches for and finds a missing library book.&quot;,task:&quot;What should a good summary include?&quot;,choices:[&quot;Every single detail&quot;,&quot;Only the most important ideas&quot;,&quot;A completely different story&quot;],answer:1,why:&quot;A summary focuses on the most important ideas.&quot;},
+  {title:&quot;2. Prefixes and suffixes&quot;,body:&quot;A prefix goes at the beginning of a word. A suffix goes at the end. They can change a word&#x27;s meaning or form.&quot;,example:&quot;Un- + kind = unkind (not kind). Help + -ful = helpful (full of help).&quot;,task:&quot;What does the prefix “re-” usually mean in “replay”?&quot;,choices:[&quot;Before&quot;,&quot;Again&quot;,&quot;Not&quot;],answer:1,why:&quot;Replay means to play again.&quot;},
+  {title:&quot;3. Write an organized paragraph&quot;,body:&quot;Start with a topic sentence. Add details, examples, or reasons. End with a closing sentence.&quot;,example:&quot;Topic: Reading is fun. Details: It teaches me new things and takes me on adventures. Closing: That is why I enjoy reading.&quot;,task:&quot;Which detail supports “Exercise is helpful”?&quot;,choices:[&quot;It can make your body stronger.&quot;,&quot;My pencil is blue.&quot;,&quot;A book has pages.&quot;],answer:0,why:&quot;Getting stronger is a reason exercise is helpful.&quot;}
+ ]},
+4:{
+ title:&quot;Grade 4 Language Arts&quot;,
+ intro:&quot;In Grade 4, you compare texts, use evidence, and write more developed paragraphs and stories.&quot;,
+ lessons:[
+  {title:&quot;1. Inference and evidence&quot;,body:&quot;An inference is a smart conclusion based on clues in a text and what you already know.&quot;,example:&quot;The ground is wet, and a character carries an umbrella. You might infer that it has rained.&quot;,task:&quot;Sam puts on mittens and sees snow outside. What can you infer?&quot;,choices:[&quot;It is probably cold outside.&quot;,&quot;It is the middle of summer.&quot;,&quot;Sam is going swimming.&quot;],answer:0,why:&quot;Mittens and snow are clues that the weather is cold.&quot;},
+  {title:&quot;2. Similes and metaphors&quot;,body:&quot;A simile compares things using “like” or “as.” A metaphor says one thing is another to make a comparison.&quot;,example:&quot;Simile: The clouds were like cotton. Metaphor: The classroom was a beehive of activity.&quot;,task:&quot;Which sentence is a simile?&quot;,choices:[&quot;The moon is a lamp.&quot;,&quot;Her smile was as bright as the sun.&quot;,&quot;The wind whispered.&quot;],answer:1,why:&quot;It uses “as ... as” to make a comparison.&quot;},
+  {title:&quot;3. Dialogue punctuation&quot;,body:&quot;Use quotation marks around the exact words a character says. Punctuation usually goes inside the closing quotation mark in standard American/Canadian school examples.&quot;,example:&quot;Lena said, “I found the map.”&quot;,task:&quot;Which sentence shows dialogue correctly?&quot;,choices:[&#x27;Tom said, “Hello.”&#x27;,&#x27;Tom said “Hello.&#x27;,&#x27;“Tom said, Hello.”&#x27;],answer:0,why:&quot;The spoken words are enclosed in quotation marks, with the period inside.&quot;}
+ ]},
+5:{
+ title:&quot;Grade 5 Language Arts&quot;,
+ intro:&quot;In Grade 5, you support ideas with evidence, analyze information, and write organized essays.&quot;,
+ lessons:[
+  {title:&quot;1. Claims and evidence&quot;,body:&quot;A claim is a statement you want readers to consider. Evidence is information or an example that supports it.&quot;,example:&quot;Claim: The school library is useful. Evidence: Students can borrow books and use research resources.&quot;,task:&quot;Which is the best evidence for “Recess helps students”?&quot;,choices:[&quot;Many students enjoy recess.&quot;,&quot;A study or observation shows active breaks can help students return ready to learn.&quot;,&quot;The playground is painted blue.&quot;],answer:1,why:&quot;Relevant information that supports the claim is stronger evidence.&quot;},
+  {title:&quot;2. Fact and opinion&quot;,body:&quot;A fact can be checked. An opinion expresses a belief or preference.&quot;,example:&quot;Fact: A week has seven days. Opinion: Friday is the best day.&quot;,task:&quot;Which sentence is an opinion?&quot;,choices:[&quot;Water freezes at about 0°C under standard conditions.&quot;,&quot;A triangle has three sides.&quot;,&quot;Mystery books are the most exciting.&quot;],answer:2,why:&quot;“Most exciting” is a personal judgment.&quot;},
+  {title:&quot;3. Plan an essay&quot;,body:&quot;An essay usually has an introduction, organized body paragraphs, and a conclusion. Each body paragraph explains one main reason or idea.&quot;,example:&quot;For an essay about protecting nature: introduce the topic, explain ways to help, then conclude with why it matters.&quot;,task:&quot;Where should you explain your first supporting reason?&quot;,choices:[&quot;In a body paragraph&quot;,&quot;Only in the title&quot;,&quot;After the conclusion&quot;],answer:0,why:&quot;Body paragraphs develop reasons and evidence.&quot;}
+ ]},
+6:{
+ title:&quot;Grade 6 Language Arts&quot;,
+ intro:&quot;In Grade 6, you analyze what authors mean, judge evidence, and develop clear arguments and narratives.&quot;,
+ lessons:[
+  {title:&quot;1. Theme and tone&quot;,body:&quot;A theme is a message or insight about life in a story. Tone is the author&#x27;s attitude, which can sound humorous, serious, hopeful, or worried.&quot;,example:&quot;A story about a character who keeps trying may develop a theme about perseverance.&quot;,task:&quot;A story shows a character learning to ask for help. Which could be a theme?&quot;,choices:[&quot;Asking for help can be a strength.&quot;,&quot;The story has 12 pages.&quot;,&quot;The character wears a green coat.&quot;],answer:0,why:&quot;A theme is a larger message, not a small detail.&quot;},
+  {title:&quot;2. Evaluate a claim&quot;,body:&quot;Ask whether a claim is clear, whether evidence is relevant, and whether the source is trustworthy. One example may not prove a claim about everyone.&quot;,example:&quot;“Two students like this app, so every student likes it” is an overgeneralization.&quot;,task:&quot;Which evidence is strongest for a claim about school lunch preferences?&quot;,choices:[&quot;One person&#x27;s guess&quot;,&quot;A fair survey of many students&quot;,&quot;A random online comment&quot;],answer:1,why:&quot;A fair survey of many students better represents the group.&quot;},
+  {title:&quot;3. Write an argument&quot;,body:&quot;An argument presents a clear claim, gives reasons supported by evidence, considers another point of view, and ends with a conclusion.&quot;,example:&quot;Claim: The class should have reading time. Reason: It builds reading habits. Evidence: Students can track books and reflect on progress.&quot;,task:&quot;What should a strong argument include?&quot;,choices:[&quot;A claim and relevant supporting evidence&quot;,&quot;Only repeated opinions&quot;,&quot;Facts that do not relate to the claim&quot;],answer:0,why:&quot;Relevant evidence and reasons help readers understand why a claim makes sense.&quot;}
+ ]}
+};
+let activeGrade=1, activeLesson=0;
+function teachGrade(grade){
+ activeGrade=grade; activeLesson=0;
+ document.querySelectorAll(&#x27;.grade-card&#x27;).forEach((card,i)=&gt;card.classList.toggle(&#x27;selected&#x27;,i===grade-1));
+ const panel=document.getElementById(&#x27;teachPanel&#x27;);
+ panel.hidden=false;
+ renderLesson();
+ panel.scrollIntoView({behavior:&#x27;smooth&#x27;,block:&#x27;start&#x27;});
+}
+function renderLesson(){
+ const data=gradeLessons[activeGrade], lesson=data.lessons[activeLesson];
+ document.getElementById(&#x27;teachTitle&#x27;).textContent=data.title;
+ document.getElementById(&#x27;teachIntro&#x27;).textContent=data.intro;
+ document.getElementById(&#x27;teachContent&#x27;).innerHTML=&#x27;&lt;div class=&quot;lesson-step&quot;&gt;&lt;h3&gt;&#x27;+lesson.title+&#x27;&lt;/h3&gt;&lt;p&gt;&#x27;+lesson.body+&#x27;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Example:&lt;/b&gt; &#x27;+lesson.example+&#x27;&lt;/p&gt;&lt;/div&gt;&#x27;;
+ document.getElementById(&#x27;taskQuestion&#x27;).textContent=lesson.task;
+ const choices=document.getElementById(&#x27;taskChoices&#x27;);
+ choices.innerHTML=&#x27;&#x27;;
+ lesson.choices.forEach((choice,i)=&gt;{
+   const label=document.createElement(&#x27;label&#x27;);
+   label.style.display=&#x27;block&#x27;;label.style.padding=&#x27;6px 0&#x27;;
+   const radio=document.createElement(&#x27;input&#x27;);radio.type=&#x27;radio&#x27;;radio.name=&#x27;gradeTask&#x27;;radio.value=i;
+   label.appendChild(radio);label.appendChild(document.createTextNode(&#x27; &#x27;+choice));choices.appendChild(label);
+ });
+ document.getElementById(&#x27;taskFeedback&#x27;).textContent=&#x27;&#x27;;
+ document.getElementById(&#x27;taskFeedback&#x27;).className=&#x27;feedback&#x27;;
+ const button=document.getElementById(&#x27;nextLesson&#x27;);
+ button.textContent=activeLesson===data.lessons.length-1?&#x27;Restart these lessons ↻&#x27;:&#x27;Next lesson →&#x27;;
+ button.onclick=activeLesson===data.lessons.length-1?()=&gt;teachGrade(activeGrade):nextLessonStep;
+ // Add a check button before the next lesson button
+ let check=document.getElementById(&#x27;checkGradeTask&#x27;);
+ if(!check){check=document.createElement(&#x27;button&#x27;);check.id=&#x27;checkGradeTask&#x27;;check.type=&#x27;button&#x27;;check.textContent=&#x27;Check answer&#x27;;button.parentNode.insertBefore(check,button);}
+ check.onclick=checkGradeTask;
+}
+function checkGradeTask(){
+ const lesson=gradeLessons[activeGrade].lessons[activeLesson];
+ const picked=document.querySelector(&#x27;input[name=&quot;gradeTask&quot;]:checked&#x27;);
+ const feedback=document.getElementById(&#x27;taskFeedback&#x27;);
+ if(!picked){feedback.textContent=&#x27;Choose an answer first.&#x27;;feedback.className=&#x27;feedback wrong&#x27;;return;}
+ if(Number(picked.value)===lesson.answer){feedback.textContent=&#x27;Correct! &#x27;+lesson.why;feedback.className=&#x27;feedback correct&#x27;;}
+ else{feedback.textContent=&#x27;Not quite. &#x27;+lesson.why+&#x27; Try the next lesson when you are ready.&#x27;;feedback.className=&#x27;feedback wrong&#x27;;}
+}
+function nextLessonStep(){
+ const lessons=gradeLessons[activeGrade].lessons;
+ activeLesson=(activeLesson+1)%lessons.length;
+ renderLesson();
+}
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="subject-frame" id="section-math" hidden>
+      <div class="frame-heading"><div><h2>🧠 Math Zone</h2><p>Addition, subtraction, multiplication, division, fractions & more</p></div><button class="open-btn" type="button" onclick="openSubject('math')">Open subject view ↗</button></div>
+      <iframe title="🧠 Math Zone" loading="lazy" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Math Zone — Grades 1–6&lt;/title&gt;
+&lt;style&gt;
+*{box-sizing:border-box}body{margin:0;background:#f4f7ff;color:#17243b;font-family:system-ui,-apple-system,Segoe UI,sans-serif;padding:18px}.app{max-width:850px;margin:auto}.hero{background:linear-gradient(130deg,#5546df,#168be5);color:white;padding:24px;border-radius:18px;margin-bottom:16px}.hero h1{font-size:clamp(28px,5vw,42px);margin:5px 0}.sub{opacity:.92}.panel{background:white;padding:18px;border-radius:15px;margin:13px 0;box-shadow:0 3px 12px #243b6310}h2,h3{margin-top:0}.settings{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{font-size:13px;font-weight:750;display:block;margin:0 0 6px}select,input{width:100%;padding:12px;border:1px solid #d7deeb;border-radius:9px;background:white;color:#17243b;font:inherit;margin-bottom:12px}.topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:10px;padding:12px;background:#e9edff;color:#3542a0}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f4a62a}.topics button{min-height:72px;text-align:left;border:2px solid transparent}.topics button.active{border-color:#6655ed;background:#eeecff;color:#4232bb}.topics span{display:block;font-size:24px;margin-bottom:3px}.primary{background:#5546df;color:white;width:100%}.secondary{background:#edf0f7;color:#34415a}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#f2f4ff;border-radius:10px;text-align:center;padding:12px 4px}.stat strong{display:block;font-size:24px;color:#5044d4}.stat small{font-size:12px}.question{font-size:clamp(25px,5vw,38px);font-weight:800;text-align:center;padding:20px 4px;overflow-wrap:anywhere}.feedback{padding:12px;border-radius:10px;margin:8px 0;display:none;line-height:1.5}.good{display:block;background:#e5f8ec;color:#176438}.bad{display:block;background:#fff1df;color:#81501a}.muted{color:#65728a;font-size:13px;line-height:1.5}.steps{white-space:pre-wrap;background:#f5f6fc;border-radius:9px;padding:12px;font-size:14px;line-height:1.7;overflow-wrap:anywhere}.pill{display:inline-block;background:#eeecff;color:#5044d4;padding:5px 9px;border-radius:20px;font-size:12px;font-weight:750}.rowbtn{display:flex;gap:8px;margin-top:10px}.rowbtn button{flex:1}.hidden{display:none!important}.footer{text-align:center;font-size:12px;color:#768198;padding:12px}@media(min-width:600px){.topics{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:430px){body{padding:9px}.settings{grid-template-columns:1fr;gap:0}.panel{padding:14px}.hero{padding:19px}}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;main class=&quot;app&quot; id=&quot;mathzone&quot;&gt;
+&lt;header class=&quot;hero&quot;&gt;&lt;div style=&quot;font-size:13px;font-weight:800;letter-spacing:2px&quot;&gt;LEARN · PRACTICE · LEVEL UP&lt;/div&gt;&lt;h1&gt;🧠 Math Zone&lt;/h1&gt;&lt;div class=&quot;sub&quot;&gt;Your fun place to master math, Grades 1–6!&lt;/div&gt;&lt;p&gt;&lt;span class=&quot;pill&quot; style=&quot;background:#ffffff26;color:white&quot;&gt;7 Math Topics&lt;/span&gt; &lt;span class=&quot;pill&quot; style=&quot;background:#ffffff26;color:white&quot;&gt;Unlimited Practice&lt;/span&gt;&lt;/p&gt;&lt;/header&gt;
+&lt;section class=&quot;panel&quot;&gt;&lt;h2&gt;🎯 Choose your level&lt;/h2&gt;&lt;div class=&quot;settings&quot;&gt;&lt;div&gt;&lt;label for=&quot;grade&quot;&gt;YOUR GRADE&lt;/label&gt;&lt;select id=&quot;grade&quot;&gt;&lt;option value=&quot;1&quot;&gt;Grade 1 · Beginner&lt;/option&gt;&lt;option value=&quot;2&quot;&gt;Grade 2&lt;/option&gt;&lt;option value=&quot;3&quot;&gt;Grade 3&lt;/option&gt;&lt;option value=&quot;4&quot;&gt;Grade 4&lt;/option&gt;&lt;option value=&quot;5&quot;&gt;Grade 5&lt;/option&gt;&lt;option value=&quot;6&quot;&gt;Grade 6 · Expert&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div&gt;&lt;label for=&quot;difficulty&quot;&gt;DIFFICULTY&lt;/label&gt;&lt;select id=&quot;difficulty&quot;&gt;&lt;option value=&quot;easy&quot;&gt;Easy 🌱&lt;/option&gt;&lt;option value=&quot;normal&quot; selected&gt;Normal ⭐&lt;/option&gt;&lt;option value=&quot;hard&quot;&gt;Challenge 🔥&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;/div&gt;&lt;h3&gt;📚 Pick a math topic&lt;/h3&gt;&lt;div class=&quot;topics&quot; id=&quot;topics&quot;&gt;&lt;button class=&quot;active&quot; data-topic=&quot;addition&quot;&gt;&lt;span&gt;➕&lt;/span&gt;Addition&lt;/button&gt;&lt;button data-topic=&quot;subtraction&quot;&gt;&lt;span&gt;➖&lt;/span&gt;Subtraction&lt;/button&gt;&lt;button data-topic=&quot;multiplication&quot;&gt;&lt;span&gt;✖️&lt;/span&gt;Multiplication&lt;/button&gt;&lt;button data-topic=&quot;division&quot;&gt;&lt;span&gt;➗&lt;/span&gt;Division&lt;/button&gt;&lt;button data-topic=&quot;fractions&quot;&gt;&lt;span&gt;🍕&lt;/span&gt;Fractions&lt;/button&gt;&lt;button data-topic=&quot;perimeter&quot;&gt;&lt;span&gt;📐&lt;/span&gt;Perimeter&lt;/button&gt;&lt;button data-topic=&quot;longdivision&quot;&gt;&lt;span&gt;📝&lt;/span&gt;Long Division&lt;/button&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class=&quot;panel&quot;&gt;&lt;div style=&quot;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap&quot;&gt;&lt;h2 style=&quot;margin:0&quot;&gt;✏️ Practice time!&lt;/h2&gt;&lt;span class=&quot;pill&quot; id=&quot;badge&quot;&gt;Addition&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;question&quot; id=&quot;question&quot; aria-live=&quot;polite&quot;&gt;8 + 5 = ?&lt;/div&gt;&lt;div class=&quot;muted&quot; id=&quot;description&quot; style=&quot;text-align:center;margin-bottom:12px&quot;&gt;Solve the problem and enter your answer below.&lt;/div&gt;&lt;form id=&quot;form&quot;&gt;&lt;label for=&quot;answer&quot;&gt;YOUR ANSWER&lt;/label&gt;&lt;input id=&quot;answer&quot; placeholder=&quot;Type your answer...&quot; autocomplete=&quot;off&quot; required&gt;&lt;button type=&quot;submit&quot; class=&quot;primary&quot;&gt;Check Answer ✓&lt;/button&gt;&lt;/form&gt;&lt;div class=&quot;feedback&quot; id=&quot;feedback&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;&lt;div class=&quot;rowbtn&quot;&gt;&lt;button id=&quot;hintbtn&quot; class=&quot;secondary&quot;&gt;💡 Hint&lt;/button&gt;&lt;button id=&quot;next&quot; class=&quot;secondary&quot;&gt;➡️ Next Question&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;feedback&quot; id=&quot;hintbox&quot; style=&quot;background:#f1efff;color:#443a9c&quot;&gt;&lt;/div&gt;&lt;div id=&quot;solution&quot; class=&quot;hidden&quot;&gt;&lt;h3&gt;📖 How to solve it&lt;/h3&gt;&lt;div id=&quot;steps&quot; class=&quot;steps&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class=&quot;panel&quot;&gt;&lt;h2&gt;🏆 Your progress&lt;/h2&gt;&lt;div class=&quot;stats&quot;&gt;&lt;div class=&quot;stat&quot;&gt;&lt;strong id=&quot;score&quot;&gt;0&lt;/strong&gt;&lt;small&gt;Correct&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;&lt;strong id=&quot;attempts&quot;&gt;0&lt;/strong&gt;&lt;small&gt;Attempts&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;&lt;strong id=&quot;streak&quot;&gt;0&lt;/strong&gt;&lt;small&gt;Best streak 🔥&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;margin-top:15px;font-size:13px;font-weight:750&quot;&gt;Accuracy&lt;/div&gt;&lt;div style=&quot;height:9px;background:#e8ebf5;border-radius:20px;margin-top:7px;overflow:hidden&quot;&gt;&lt;div id=&quot;bar&quot; style=&quot;height:100%;width:0%;background:linear-gradient(90deg,#6850ed,#20b6d4);transition:width .25s&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class=&quot;muted&quot; id=&quot;accuracy&quot;&gt;Start answering questions to track your progress!&lt;/p&gt;&lt;button id=&quot;reset&quot; class=&quot;secondary&quot; style=&quot;width:100%;margin-top:5px&quot;&gt;↻ Reset Score&lt;/button&gt;&lt;/section&gt;
+&lt;div class=&quot;footer&quot;&gt;Keep learning, keep growing! 🌟 Every question is progress.&lt;/div&gt;
+&lt;/main&gt;
+&lt;script&gt;
+(()=&gt;{&#x27;use strict&#x27;;
+const $=id=&gt;document.getElementById(id);
+const names={addition:&#x27;Addition&#x27;,subtraction:&#x27;Subtraction&#x27;,multiplication:&#x27;Multiplication&#x27;,division:&#x27;Division&#x27;,fractions:&#x27;Fractions&#x27;,perimeter:&#x27;Perimeter&#x27;,longdivision:&#x27;Long Division&#x27;};
+let topic=&#x27;addition&#x27;,answer=&#x27;&#x27;,hint=&#x27;&#x27;,steps=&#x27;&#x27;,solved=false,score=0,attempts=0,streak=0,best=0;
+const rand=(a,b)=&gt;Math.floor(Math.random()*(b-a+1))+a;
+const gcd=(a,b)=&gt;b?gcd(b,a%b):Math.abs(a);
+const simp=(a,b)=&gt;{let g=gcd(a,b);return [a/g,b/g]};
+const ft=(a,b)=&gt;b===1?String(a):a+&#x27;/&#x27;+b;
+function generate(){
+ const g=+$(&#x27;grade&#x27;).value,d=$(&#x27;difficulty&#x27;).value,f=d===&#x27;easy&#x27;?1:d===&#x27;hard&#x27;?3:2;
+ // Grade-specific number ranges requested by the user.
+ const gradeMax={1:10,2:100,3:1000,4:100000,5:1000000,6:10000000}[g];
+ const rangeMax=Math.max(10, Math.floor(gradeMax*(d===&#x27;easy&#x27;?0.25:d===&#x27;hard&#x27;?1:0.6)));
+ let a,b,c,n,den,num,op;
+ solved=false;$(&#x27;feedback&#x27;).className=&#x27;feedback&#x27;;$(&#x27;feedback&#x27;).textContent=&#x27;&#x27;;$(&#x27;hintbox&#x27;).className=&#x27;feedback&#x27;;$(&#x27;hintbox&#x27;).textContent=&#x27;&#x27;;$(&#x27;solution&#x27;).classList.add(&#x27;hidden&#x27;);$(&#x27;answer&#x27;).value=&#x27;&#x27;;$(&#x27;description&#x27;).textContent=&#x27;Solve the problem and enter your answer below.&#x27;;
+ if(topic===&#x27;addition&#x27;){a=rand(1,rangeMax);b=rand(1,rangeMax);answer=String(a+b);$(&#x27;question&#x27;).textContent=`${a} + ${b} = ?`;hint=&#x27;Add the numbers. Line up the ones, tens and hundreds.&#x27;;steps=`${a} + ${b} = ${answer}.\nAdd each place value, carrying to the next column when a total is 10 or more.`}
+ else if(topic===&#x27;subtraction&#x27;){a=rand(1,rangeMax);b=rand(0,a);answer=String(a-b);$(&#x27;question&#x27;).textContent=`${a} − ${b} = ?`;hint=&#x27;Subtract the smaller number from the bigger number. Regroup if needed.&#x27;;steps=`${a} − ${b} = ${answer}.\nSubtract each place value. Regroup if a digit is too small.`}
+ else if(topic===&#x27;multiplication&#x27;){a=rand(1,Math.max(2,Math.min(rangeMax, g===1?5:g===2?10:12)));b=rand(1,Math.max(2,Math.min(rangeMax, g===1?5:g===2?10:12)));if(g&gt;=3&amp;&amp;d===&#x27;hard&#x27;){a=rand(10,Math.min(rangeMax,999));b=rand(2,12)}answer=String(a*b);$(&#x27;question&#x27;).textContent=`${a} × ${b} = ?`;hint=`${a} × ${b} means ${b} groups of ${a}.`;steps=`${a} × ${b} = ${answer}.\nYou can add ${a} to itself ${b} times or use a multiplication table.`}
+ else if(topic===&#x27;division&#x27;||topic===&#x27;longdivision&#x27;){b=rand(2,Math.min(g===1?5:12,Math.max(2,3+g*2)));n=rand(topic===&#x27;longdivision&#x27;?Math.min(10,rangeMax):1,Math.max(10,Math.floor(rangeMax/b)));if(topic===&#x27;longdivision&#x27;&amp;&amp;g===1)n=rand(2,9);a=b*n;answer=String(n);$(&#x27;question&#x27;).textContent=`${a} ÷ ${b} = ?`;hint=topic===&#x27;longdivision&#x27;?&#x27;Divide, multiply, subtract, then bring down the next digit.&#x27;:&#x27;Ask how many groups of &#x27;+b+&#x27; fit into &#x27;+a+&#x27;.&#x27;;steps=topic===&#x27;longdivision&#x27;?`1. Divide from left to right.\n2. The quotient is ${n}.\n3. Check: ${n} × ${b} = ${a}.\nAnswer: ${n}.`:`${a} ÷ ${b} = ${answer}.\nCheck: ${answer} × ${b} = ${a}.`;$(&#x27;description&#x27;).textContent=topic===&#x27;longdivision&#x27;?&#x27;Long division practice · Work from left to right.&#x27;:&#x27;Solve the division problem.&#x27;}
+ else if(topic===&#x27;fractions&#x27;){if(g&lt;=2){a=rand(1,4);b=rand(a+1,8);c=rand(1,4);n=rand(c+1,8);num=a*n+c*b;den=b*n;answer=ft(...simp(num,den));$(&#x27;question&#x27;).textContent=`${a}/${b} + ${c}/${n} = ?`;hint=&#x27;Find a common denominator before adding the numerators.&#x27;;steps=`${a}/${b} + ${c}/${n} = ${a*n}/${den} + ${c*b}/${den} = ${num}/${den} = ${answer}.`}else{b=rand(2,10);n=rand(2,10);a=rand(1,b);c=rand(1,n);op=rand(0,1);if(op===0){num=a*n+c*b;den=b*n;answer=ft(...simp(num,den));$(&#x27;question&#x27;).textContent=`${a}/${b} + ${c}/${n} = ?`;hint=&#x27;Make the denominators the same, then add the numerators.&#x27;;steps=`${a}/${b} + ${c}/${n} = ${a*n}/${den} + ${c*b}/${den} = ${num}/${den} = ${answer}.`}else{num=a*c;den=b*n;answer=ft(...simp(num,den));$(&#x27;question&#x27;).textContent=`${a}/${b} × ${c}/${n} = ?`;hint=&#x27;Multiply the top numbers together and the bottom numbers together.&#x27;;steps=`${a}/${b} × ${c}/${n} = ${a*c}/${b*n} = ${answer}.`}}}
+ else{a=rand(2,Math.max(2,rangeMax));b=rand(2,Math.max(2,rangeMax));answer=String(2*(a+b));$(&#x27;question&#x27;).textContent=`Rectangle: length ${a}, width ${b}. Perimeter = ?`;$(&#x27;description&#x27;).textContent=&#x27;Enter a number. Perimeter is measured in units.&#x27;;hint=&#x27;Perimeter is the distance around the outside. Add all four sides.&#x27;;steps=`Perimeter = length + width + length + width\n= ${a} + ${b} + ${a} + ${b}\n= 2 × (${a} + ${b})\n= ${answer} units.`}
+ $(&#x27;badge&#x27;).textContent=names[topic];$(&#x27;answer&#x27;).focus();
+}
+function stats(){$(&#x27;score&#x27;).textContent=score;$(&#x27;attempts&#x27;).textContent=attempts;$(&#x27;streak&#x27;).textContent=best;let p=attempts?Math.round(score/attempts*100):0;$(&#x27;bar&#x27;).style.width=p+&#x27;%&#x27;;$(&#x27;accuracy&#x27;).textContent=attempts?`${p}% accuracy · ${score===attempts?&#x27;Perfect so far! Keep going!&#x27;:&#x27;Keep practicing to improve!&#x27;}`:&#x27;Start answering questions to track your progress!&#x27;}
+$(&#x27;topics&#x27;).querySelectorAll(&#x27;[data-topic]&#x27;).forEach(btn=&gt;btn.addEventListener(&#x27;click&#x27;,()=&gt;{topic=btn.dataset.topic;$(&#x27;topics&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(x=&gt;x.classList.toggle(&#x27;active&#x27;,x===btn));generate()}));
+$(&#x27;grade&#x27;).addEventListener(&#x27;change&#x27;,generate);$(&#x27;difficulty&#x27;).addEventListener(&#x27;change&#x27;,generate);$(&#x27;next&#x27;).addEventListener(&#x27;click&#x27;,generate);
+$(&#x27;hintbtn&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{$(&#x27;hintbox&#x27;).className=&#x27;feedback good&#x27;;$(&#x27;hintbox&#x27;).textContent=&#x27;💡 &#x27;+hint});
+$(&#x27;form&#x27;).addEventListener(&#x27;submit&#x27;,e=&gt;{e.preventDefault();if(solved)return;let v=$(&#x27;answer&#x27;).value.trim().replace(/\s/g,&#x27;&#x27;);if(!v)return;attempts++;if(v===answer.replace(/\s/g,&#x27;&#x27;)){score++;streak++;best=Math.max(best,streak);solved=true;$(&#x27;feedback&#x27;).className=&#x27;feedback good&#x27;;$(&#x27;feedback&#x27;).textContent=&#x27;🎉 Correct! Awesome work!&#x27;;$(&#x27;solution&#x27;).classList.remove(&#x27;hidden&#x27;);$(&#x27;steps&#x27;).textContent=steps}else{streak=0;$(&#x27;feedback&#x27;).className=&#x27;feedback bad&#x27;;$(&#x27;feedback&#x27;).textContent=&#x27;Not quite! Try again, or tap Hint for help.&#x27;}stats()});
+$(&#x27;reset&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{score=0;attempts=0;streak=0;best=0;stats();generate()});
+generate();stats();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="subject-frame" id="section-religion" hidden>
+      <div class="frame-heading"><div><h2>🌈 Religion & Worldviews</h2><p>Explore beliefs, traditions, values and worldviews respectfully</p></div><button class="open-btn" type="button" onclick="openSubject('religion')">Open subject view ↗</button></div>
+      <iframe title="🌈 Religion &amp; Worldviews" loading="lazy" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Religion &amp; Worldviews Explorer | Grades 1–6&lt;/title&gt;
+&lt;style&gt;
+:root{--navy:#253653;--purple:#6651a3;--lav:#f0edff;--gold:#ffcf70;--ink:#243044;--muted:#667085;--line:#e2e5ef;--green:#28765a}
+*{box-sizing:border-box}body{margin:0;background:#f7f8fc;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,sans-serif;line-height:1.6}
+header{color:white;background:linear-gradient(125deg,#253653,#6651a3);padding:30px 18px 28px}.wrap{max-width:1080px;margin:auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#f0edff;font-size:.94rem}
+.pill{border:1px solid #ffffff66;background:#ffffff18;border-radius:999px;padding:7px 12px;font-size:.88rem}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.12;margin:15px 0 10px}header p{max-width:720px;color:#f2efff;margin:0}
+main{padding:24px 16px 46px}.layout{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.panel,.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #25365308}
+h2{font-size:1.4rem;color:var(--navy);margin:0 0 9px}h3{color:var(--navy);margin:0 0 7px}.muted{color:var(--muted);font-size:.94rem}
+.grades{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:14px}.grade{border:2px solid transparent;border-radius:11px;background:#f0edff;color:#45387b;padding:10px 5px;font:inherit;font-weight:750;cursor:pointer}.grade.active{background:var(--purple);color:white;border-color:#c8bdff}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}.filter,.btn{border:0;border-radius:11px;padding:9px 13px;font:inherit;font-weight:700;cursor:pointer}.filter{background:#f0edff;color:#45387b}.filter.active{background:var(--navy);color:white}.btn{background:var(--gold);color:#3c2b0b;align-self:flex-start;margin-top:auto}.btn.secondary{background:#f0edff;color:#45387b}
+.grade:focus-visible,.filter:focus-visible,.btn:focus-visible,input:focus-visible{outline:3px solid #ffcf70;outline-offset:2px}
+.feature{display:flex;gap:12px;align-items:flex-start}.icon{font-size:2rem;background:var(--lav);border-radius:13px;padding:9px}.callout{background:#f2f8f3;border-left:4px solid var(--green);padding:12px 14px;border-radius:8px;margin-top:14px}
+.section{margin-top:23px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:13px}.card{display:flex;flex-direction:column;gap:8px;min-height:205px}.tag{font-size:.76rem;font-weight:800;color:var(--green);letter-spacing:.05em;text-transform:uppercase}.bigicon{font-size:2rem}.card p{margin:0}.detail{margin-top:15px;background:white;border:1px solid var(--line);border-radius:16px;padding:22px}.detail ul{padding-left:22px}.quizq{padding:15px 0;border-bottom:1px solid var(--line)}.quizq:last-child{border:0}.option{display:block;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:7px 0;cursor:pointer}.option:hover{background:#faf9ff}.feedback{font-weight:750;margin-top:12px}.hidden{display:none!important}
+footer{text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);padding:22px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.grades{grid-template-columns:repeat(3,1fr)}}@media(max-width:480px){.cards{grid-template-columns:1fr}.panel,.card{padding:16px}}
+&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;&lt;div class=&quot;wrap&quot;&gt;&lt;div class=&quot;top&quot;&gt;&lt;div class=&quot;brand&quot;&gt;🕊️ Religion &amp; Worldviews Explorer&lt;/div&gt;&lt;div class=&quot;pill&quot;&gt;Grades 1–6 · Learn · Reflect · Quiz&lt;/div&gt;&lt;/div&gt;&lt;h1&gt;Learn about beliefs&lt;br&gt;and being kind.&lt;/h1&gt;&lt;p&gt;Explore religious traditions, stories, celebrations, sacred places, and shared values—while remembering that people believe different things, and some people are not religious.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+&lt;main class=&quot;wrap&quot;&gt;
+&lt;section class=&quot;layout&quot;&gt;
+&lt;div class=&quot;panel&quot;&gt;&lt;h2&gt;Choose your grade&lt;/h2&gt;&lt;p class=&quot;muted&quot;&gt;Pick a grade to explore age-appropriate topics and activities.&lt;/p&gt;&lt;div class=&quot;grades&quot; id=&quot;grades&quot;&gt;&lt;button class=&quot;grade active&quot; data-grade=&quot;1&quot;&gt;Grade 1&lt;/button&gt;&lt;button class=&quot;grade&quot; data-grade=&quot;2&quot;&gt;Grade 2&lt;/button&gt;&lt;button class=&quot;grade&quot; data-grade=&quot;3&quot;&gt;Grade 3&lt;/button&gt;&lt;button class=&quot;grade&quot; data-grade=&quot;4&quot;&gt;Grade 4&lt;/button&gt;&lt;button class=&quot;grade&quot; data-grade=&quot;5&quot;&gt;Grade 5&lt;/button&gt;&lt;button class=&quot;grade&quot; data-grade=&quot;6&quot;&gt;Grade 6&lt;/button&gt;&lt;/div&gt;
+&lt;div class=&quot;filters&quot; id=&quot;filters&quot;&gt;&lt;button class=&quot;filter active&quot; data-filter=&quot;all&quot;&gt;All topics&lt;/button&gt;&lt;button class=&quot;filter&quot; data-filter=&quot;beliefs&quot;&gt;Beliefs&lt;/button&gt;&lt;button class=&quot;filter&quot; data-filter=&quot;stories&quot;&gt;Stories&lt;/button&gt;&lt;button class=&quot;filter&quot; data-filter=&quot;celebrations&quot;&gt;Celebrations&lt;/button&gt;&lt;button class=&quot;filter&quot; data-filter=&quot;values&quot;&gt;Values&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;panel&quot;&gt;&lt;div class=&quot;feature&quot;&gt;&lt;div class=&quot;icon&quot;&gt;🌱&lt;/div&gt;&lt;div&gt;&lt;h2 id=&quot;welcome&quot;&gt;Your learning journey&lt;/h2&gt;&lt;p class=&quot;muted&quot;&gt;Learn with curiosity, ask respectful questions, and think about what makes communities meaningful.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;callout&quot;&gt;&lt;b&gt;Explorer promise:&lt;/b&gt; We can learn about different beliefs without making fun of anyone or saying one group is better than another.&lt;/div&gt;&lt;p class=&quot;muted&quot;&gt;This site teaches about religions and worldviews for learning. It does not ask you to adopt a belief.&lt;/p&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;section class=&quot;section&quot;&gt;&lt;h2 id=&quot;heading&quot;&gt;Grade 1 lessons&lt;/h2&gt;&lt;p class=&quot;muted&quot; id=&quot;subheading&quot;&gt;Choose a topic to open a learning guide.&lt;/p&gt;&lt;div class=&quot;cards&quot; id=&quot;cards&quot;&gt;&lt;/div&gt;&lt;div class=&quot;detail hidden&quot; id=&quot;detail&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class=&quot;section panel&quot;&gt;&lt;h2&gt;🧠 Quick knowledge check&lt;/h2&gt;&lt;p class=&quot;muted&quot;&gt;Answer five questions about respect and worldviews, then check your score.&lt;/p&gt;&lt;div id=&quot;quiz&quot;&gt;&lt;/div&gt;&lt;button class=&quot;btn&quot; id=&quot;check&quot;&gt;Check my answers&lt;/button&gt; &lt;button class=&quot;btn secondary&quot; id=&quot;reset&quot;&gt;Try again&lt;/button&gt;&lt;div class=&quot;feedback&quot; id=&quot;feedback&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;/main&gt;&lt;footer&gt;Religion &amp; Worldviews Explorer · A learning project for Grades 1–6&lt;br&gt;Religious traditions are diverse. Practices and beliefs can differ within the same tradition.&lt;/footer&gt;
+&lt;script&gt;
+const lessons=[
+{cat:&quot;beliefs&quot;,icon:&quot;🌍&quot;,title:&quot;Many beliefs and worldviews&quot;,intro:&quot;People understand life&#x27;s big questions in different ways. Some follow a religion, some have non-religious worldviews, and some are still exploring.&quot;,more:&quot;A worldview is a way someone understands the world and their place in it. People may learn from family, community, books, experiences, faith, or reflection. No single description represents every person in a group.&quot;,activity:[&quot;Grade 1: Name one thing that makes people unique.&quot;,&quot;Grade 2: Think of a respectful question you could ask.&quot;,&quot;Grade 3: Explain what the word worldview might mean.&quot;,&quot;Grade 4: Compare two viewpoints without judging them.&quot;,&quot;Grade 5: Describe how experiences can shape beliefs.&quot;,&quot;Grade 6: Explain why people within one religion may have different views.&quot;]},
+{cat:&quot;stories&quot;,icon:&quot;📖&quot;,title:&quot;Stories with meaning&quot;,intro:&quot;Many religious and cultural traditions share stories that help people think about kindness, courage, responsibility, and hope.&quot;,more:&quot;Stories may be shared orally, written in books, taught by families, or studied in communities. Examples include stories from the Bible, Qur’an, Torah, Buddhist traditions, Hindu epics, Sikh history, Indigenous oral traditions, and many other sources. Learn each story in its own context and listen to people from that tradition.&quot;,activity:[&quot;Grade 1: What can a story teach us about helping?&quot;,&quot;Grade 2: Retell a story in three parts.&quot;,&quot;Grade 3: Identify the lesson a character learns.&quot;,&quot;Grade 4: Notice how different listeners may interpret a story.&quot;,&quot;Grade 5: Ask who shares a story and why it matters.&quot;,&quot;Grade 6: Compare themes while respecting differences.&quot;]},
+{cat:&quot;celebrations&quot;,icon:&quot;🎉&quot;,title:&quot;Holidays and celebrations&quot;,intro:&quot;People mark special times with family gatherings, meals, prayer, music, service, reflection, and traditions.&quot;,more:&quot;Examples include Eid celebrations in Islam, Diwali celebrated by many Hindus, Jains, Sikhs and some Buddhists, Hanukkah and Passover in Judaism, Christmas and Easter in Christianity, Vesak in many Buddhist communities, and secular or local celebrations. Dates and customs can vary, and not everyone in a tradition celebrates in the same way.&quot;,activity:[&quot;Grade 1: Draw a celebration you know about.&quot;,&quot;Grade 2: Describe a tradition that brings people together.&quot;,&quot;Grade 3: Compare two celebrations respectfully.&quot;,&quot;Grade 4: Explain why dates or customs may vary.&quot;,&quot;Grade 5: Research a celebration using a reliable source.&quot;,&quot;Grade 6: Explain how celebrations can express memory and identity.&quot;]},
+{cat:&quot;values&quot;,icon:&quot;💛&quot;,title:&quot;Kindness and responsibility&quot;,intro:&quot;Many traditions and worldviews encourage people to care for others, act fairly, and think about their responsibilities.&quot;,more:&quot;People express values in different ways. Examples include compassion, generosity, honesty, justice, service, gratitude, and care for the natural world. Similar words can mean different things in different contexts, and people may disagree about how best to put a value into practice.&quot;,activity:[&quot;Grade 1: Name one way to be kind today.&quot;,&quot;Grade 2: Think of a fair way to share.&quot;,&quot;Grade 3: Describe a time someone helped a community.&quot;,&quot;Grade 4: Explain how people can disagree respectfully.&quot;,&quot;Grade 5: Plan a small helpful action.&quot;,&quot;Grade 6: Discuss how values can guide difficult choices.&quot;]},
+{cat:&quot;beliefs&quot;,icon:&quot;🏛️&quot;,title:&quot;Sacred and important places&quot;,intro:&quot;Some places are special for worship, reflection, learning, remembrance, or community gatherings.&quot;,more:&quot;Places include churches, mosques, synagogues, temples, gurdwaras, Buddhist temples and monasteries, shrines, and important natural places. Some people find meaning outdoors or at home. When visiting a sacred place, follow local guidance about clothing, shoes, photography, quietness, and respectful behaviour.&quot;,activity:[&quot;Grade 1: Describe a place where people gather.&quot;,&quot;Grade 2: Explain how to be respectful in a special place.&quot;,&quot;Grade 3: Identify ways places can help communities connect.&quot;,&quot;Grade 4: Research one place and its purpose.&quot;,&quot;Grade 5: Compare how two places are used.&quot;,&quot;Grade 6: Explain why a place may have different meanings to different people.&quot;]},
+{cat:&quot;stories&quot;,icon:&quot;🧭&quot;,title:&quot;Symbols, books, and objects&quot;,intro:&quot;Symbols, texts, music, and objects can help communities express what matters to them.&quot;,more:&quot;Examples include the Khanda in Sikhism, the Dharma wheel in Buddhism, the Star of David in Judaism, the cross in Christianity, and the crescent and star used by some Muslim communities. Symbols can have complex histories, and their use varies. Ask what a symbol means to people who use it rather than assuming.&quot;,activity:[&quot;Grade 1: Find a symbol that means something to you.&quot;,&quot;Grade 2: Explain what a symbol can communicate.&quot;,&quot;Grade 3: Learn the meaning of one symbol from a reliable source.&quot;,&quot;Grade 4: Explain why symbols may have more than one meaning.&quot;,&quot;Grade 5: Compare how communities use symbols.&quot;,&quot;Grade 6: Discuss why context matters when interpreting symbols.&quot;]}
+];
+let grade=1,filter=&quot;all&quot;,selected=null;
+const cards=document.getElementById(&quot;cards&quot;),detail=document.getElementById(&quot;detail&quot;);
+function render(){document.getElementById(&quot;heading&quot;).textContent=`Grade ${grade} lessons`;document.getElementById(&quot;welcome&quot;).textContent=`Grade ${grade} explorer`;document.getElementById(&quot;subheading&quot;).textContent=`Explore ${filter===&quot;all&quot;?&quot;all topics&quot;:filter} at your grade level.`;cards.innerHTML=&quot;&quot;;
+lessons.filter(l=&gt;filter===&quot;all&quot;||l.cat===filter).forEach(l=&gt;{const c=document.createElement(&quot;article&quot;);c.className=&quot;card&quot;;c.innerHTML=`&lt;div class=&quot;tag&quot;&gt;${l.cat}&lt;/div&gt;&lt;div class=&quot;bigicon&quot;&gt;${l.icon}&lt;/div&gt;&lt;h3&gt;${l.title}&lt;/h3&gt;&lt;p class=&quot;muted&quot;&gt;${l.intro}&lt;/p&gt;&lt;button class=&quot;btn&quot;&gt;Open lesson →&lt;/button&gt;`;c.querySelector(&quot;button&quot;).addEventListener(&quot;click&quot;,()=&gt;open(l));cards.appendChild(c)});if(selected)open(selected);else detail.classList.add(&quot;hidden&quot;);}
+function open(l){selected=l;detail.classList.remove(&quot;hidden&quot;);detail.innerHTML=`&lt;div class=&quot;tag&quot;&gt;Grade ${grade} · ${l.cat}&lt;/div&gt;&lt;h2&gt;${l.icon} ${l.title}&lt;/h2&gt;&lt;p&gt;${l.intro}&lt;/p&gt;&lt;h3&gt;Learn more&lt;/h3&gt;&lt;p&gt;${l.more}&lt;/p&gt;&lt;div class=&quot;callout&quot;&gt;&lt;b&gt;Try it:&lt;/b&gt; ${l.activity[grade-1]}&lt;/div&gt;&lt;h3&gt;Think about it&lt;/h3&gt;&lt;p&gt;What is one respectful question you could ask to learn more? Remember, people within the same community may have different experiences and beliefs.&lt;/p&gt;`;detail.scrollIntoView({behavior:&quot;smooth&quot;,block:&quot;nearest&quot;});}
+document.querySelectorAll(&quot;.grade&quot;).forEach(b=&gt;b.addEventListener(&quot;click&quot;,()=&gt;{grade=+b.dataset.grade;document.querySelectorAll(&quot;.grade&quot;).forEach(x=&gt;x.classList.toggle(&quot;active&quot;,x===b));render()}));
+document.querySelectorAll(&quot;.filter&quot;).forEach(b=&gt;b.addEventListener(&quot;click&quot;,()=&gt;{filter=b.dataset.filter;document.querySelectorAll(&quot;.filter&quot;).forEach(x=&gt;x.classList.toggle(&quot;active&quot;,x===b));selected=null;render()}));
+const qs=[
+{q:&quot;What is a respectful way to learn about a belief?&quot;,a:[&quot;Listen and ask thoughtful questions&quot;,&quot;Make fun of it&quot;,&quot;Assume everyone believes the same thing&quot;],c:0},
+{q:&quot;Do all people in one religion necessarily practice in exactly the same way?&quot;,a:[&quot;Yes, always&quot;,&quot;No, practices and beliefs can vary&quot;,&quot;Only children vary&quot;],c:1},
+{q:&quot;What is a worldview?&quot;,a:[&quot;A way someone understands the world&quot;,&quot;A kind of map only&quot;,&quot;A school subject with one answer&quot;],c:0},
+{q:&quot;Why might a place be sacred or important?&quot;,a:[&quot;It may be used for worship, reflection, or community&quot;,&quot;Every place means the same thing to everyone&quot;,&quot;It must be the biggest building&quot;],c:0},
+{q:&quot;Which is a good way to discuss differences?&quot;,a:[&quot;Say one group is better&quot;,&quot;Listen respectfully and avoid stereotypes&quot;,&quot;Never ask questions&quot;],c:1}
+];
+function drawQuiz(){const q=document.getElementById(&quot;quiz&quot;);q.innerHTML=&quot;&quot;;qs.forEach((item,i)=&gt;{const d=document.createElement(&quot;div&quot;);d.className=&quot;quizq&quot;;d.innerHTML=`&lt;b&gt;${i+1}. ${item.q}&lt;/b&gt;`+item.a.map((a,j)=&gt;`&lt;label class=&quot;option&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q${i}&quot; value=&quot;${j}&quot;&gt; ${a}&lt;/label&gt;`).join(&quot;&quot;);q.appendChild(d)});document.getElementById(&quot;feedback&quot;).textContent=&quot;&quot;}
+document.getElementById(&quot;check&quot;).addEventListener(&quot;click&quot;,()=&gt;{let score=0,n=0;qs.forEach((q,i)=&gt;{const v=document.querySelector(`input[name=&quot;q${i}&quot;]:checked`);if(v){n++;if(+v.value===q.c)score++}});document.getElementById(&quot;feedback&quot;).textContent=n&lt;qs.length?`You answered ${n} of ${qs.length}. Answer every question first.`:`You scored ${score} / ${qs.length}. ${score===5?&quot;Excellent respectful thinking!&quot;:score&gt;=3?&quot;Good work—review a lesson and try again.&quot;:&quot;Keep learning; open a lesson and try again.&quot;}`});
+document.getElementById(&quot;reset&quot;).addEventListener(&quot;click&quot;,drawQuiz);render();drawQuiz();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+    </section>
+
+    <section class="subject-frame" id="section-science" hidden>
+      <div class="frame-heading"><div><h2>🔬 Science Explorer</h2><p>Animals, plants, space, the human body, Earth & energy</p></div><button class="open-btn" type="button" onclick="openSubject('science')">Open subject view ↗</button></div>
+      <iframe title="🔬 Science Explorer" loading="lazy" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Science Explorer — Grades 1–6&lt;/title&gt;
+&lt;style&gt;
+*{box-sizing:border-box}body{margin:0;padding:18px;background:#f2fbf7;color:#17352f;font-family:system-ui,-apple-system,Segoe UI,sans-serif}.app{max-width:880px;margin:auto}.hero{padding:25px;border-radius:19px;color:white;background:linear-gradient(130deg,#087f72,#35b86c);margin-bottom:15px}.hero h1{font-size:clamp(29px,5vw,43px);margin:5px 0}.hero p{margin-bottom:0;line-height:1.5}.panel{background:#fff;border-radius:15px;padding:18px;margin:13px 0;box-shadow:0 4px 15px #153c2e0c}h2,h3{margin-top:0}.settings{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{display:block;font-size:13px;font-weight:750;margin-bottom:6px}select,input{width:100%;padding:12px;border:1px solid #d4e4de;border-radius:9px;font:inherit;color:#17352f;background:white;margin-bottom:12px}.topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:10px;padding:12px;background:#e3f5ed;color:#176451}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f2ad43}.topics button{text-align:left;min-height:75px;border:2px solid transparent}.topics button.active{background:#e0f7e9;border-color:#15976e;color:#08745a}.topics span{display:block;font-size:24px;margin-bottom:4px}.primary{background:#087f72;color:white;width:100%}.secondary{background:#edf3f0;color:#31564d}.rowbtn{display:flex;gap:8px;margin-top:10px}.rowbtn button{flex:1}.pill{display:inline-block;padding:5px 9px;border-radius:20px;background:#dff7e9;color:#08745a;font-size:12px;font-weight:800}.question{font-size:clamp(22px,4vw,30px);font-weight:800;text-align:center;padding:16px 0;line-height:1.4}.muted{color:#637b73;font-size:13px;line-height:1.6}.feedback{display:none;padding:12px;border-radius:10px;margin:9px 0;line-height:1.55}.good{display:block;background:#e5f8eb;color:#176438}.bad{display:block;background:#fff1df;color:#81501a}.options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.options button{text-align:left;background:#f0f5f3;color:#234b40;border:2px solid transparent}.options button:hover{border-color:#15976e}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#eff9f3;border-radius:10px;padding:12px 4px;text-align:center}.stat strong{display:block;font-size:24px;color:#087f72}.stat small{font-size:11px}.hidden{display:none!important}.footer{text-align:center;color:#6d827a;font-size:12px;padding:14px}.fact{background:#f0f9f5;padding:13px;border-radius:10px;line-height:1.6}.bar{height:9px;background:#e4eee9;border-radius:20px;overflow:hidden}.bar div{height:100%;width:0;background:linear-gradient(90deg,#087f72,#51ce83);transition:width .2s}@media(min-width:600px){.topics{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:430px){body{padding:9px}.panel{padding:14px}.settings{grid-template-columns:1fr;gap:0}.hero{padding:19px}}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;main class=&quot;app&quot; id=&quot;science&quot;&gt;
+&lt;header class=&quot;hero&quot;&gt;&lt;div style=&quot;font-size:13px;font-weight:800;letter-spacing:2px&quot;&gt;ASK · EXPLORE · DISCOVER&lt;/div&gt;&lt;h1&gt;🔬 Science Explorer&lt;/h1&gt;&lt;p&gt;Discover how the world works — for Grades 1–6!&lt;/p&gt;&lt;p&gt;&lt;span class=&quot;pill&quot; style=&quot;background:#ffffff27;color:white&quot;&gt;6 Science Topics&lt;/span&gt; &lt;span class=&quot;pill&quot; style=&quot;background:#ffffff27;color:white&quot;&gt;Fun Quizzes&lt;/span&gt;&lt;/p&gt;&lt;/header&gt;
+&lt;section class=&quot;panel&quot;&gt;&lt;h2&gt;🌎 Choose your level&lt;/h2&gt;&lt;div class=&quot;settings&quot;&gt;&lt;div&gt;&lt;label for=&quot;grade&quot;&gt;YOUR GRADE&lt;/label&gt;&lt;select id=&quot;grade&quot;&gt;&lt;option value=&quot;1&quot;&gt;Grade 1 · Explorer&lt;/option&gt;&lt;option value=&quot;2&quot;&gt;Grade 2&lt;/option&gt;&lt;option value=&quot;3&quot;&gt;Grade 3&lt;/option&gt;&lt;option value=&quot;4&quot;&gt;Grade 4&lt;/option&gt;&lt;option value=&quot;5&quot;&gt;Grade 5&lt;/option&gt;&lt;option value=&quot;6&quot;&gt;Grade 6 · Scientist&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div&gt;&lt;label for=&quot;difficulty&quot;&gt;QUIZ MODE&lt;/label&gt;&lt;select id=&quot;difficulty&quot;&gt;&lt;option value=&quot;learn&quot;&gt;Learn mode · Show explanations&lt;/option&gt;&lt;option value=&quot;challenge&quot;&gt;Challenge mode · Test yourself&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;/div&gt;&lt;h3&gt;🧪 Pick a science topic&lt;/h3&gt;&lt;div class=&quot;topics&quot; id=&quot;topics&quot;&gt;&lt;button class=&quot;active&quot; data-topic=&quot;animals&quot;&gt;&lt;span&gt;🐾&lt;/span&gt;Animals &amp; Plants&lt;/button&gt;&lt;button data-topic=&quot;space&quot;&gt;&lt;span&gt;🚀&lt;/span&gt;Space&lt;/button&gt;&lt;button data-topic=&quot;body&quot;&gt;&lt;span&gt;🫀&lt;/span&gt;Human Body&lt;/button&gt;&lt;button data-topic=&quot;matter&quot;&gt;&lt;span&gt;🧊&lt;/span&gt;Matter &amp; Materials&lt;/button&gt;&lt;button data-topic=&quot;earth&quot;&gt;&lt;span&gt;🌋&lt;/span&gt;Earth &amp; Weather&lt;/button&gt;&lt;button data-topic=&quot;physics&quot;&gt;&lt;span&gt;⚡&lt;/span&gt;Forces &amp; Energy&lt;/button&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class=&quot;panel&quot;&gt;&lt;div style=&quot;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap&quot;&gt;&lt;h2 style=&quot;margin:0&quot;&gt;🧠 Science quiz&lt;/h2&gt;&lt;span class=&quot;pill&quot; id=&quot;badge&quot;&gt;Animals &amp; Plants&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;question&quot; id=&quot;question&quot; aria-live=&quot;polite&quot;&gt;What do plants need to grow?&lt;/div&gt;&lt;div class=&quot;options&quot; id=&quot;options&quot;&gt;&lt;/div&gt;&lt;div class=&quot;feedback&quot; id=&quot;feedback&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;&lt;div class=&quot;fact hidden&quot; id=&quot;fact&quot;&gt;&lt;/div&gt;&lt;div class=&quot;rowbtn&quot;&gt;&lt;button class=&quot;secondary&quot; id=&quot;hint&quot;&gt;💡 Give me a hint&lt;/button&gt;&lt;button class=&quot;secondary&quot; id=&quot;next&quot;&gt;➡️ Next question&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;feedback&quot; id=&quot;hintbox&quot; style=&quot;background:#eef8ff;color:#24567a&quot;&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section class=&quot;panel&quot;&gt;&lt;h2&gt;🏆 Your science progress&lt;/h2&gt;&lt;div class=&quot;stats&quot;&gt;&lt;div class=&quot;stat&quot;&gt;&lt;strong id=&quot;correct&quot;&gt;0&lt;/strong&gt;&lt;small&gt;Correct answers&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;&lt;strong id=&quot;total&quot;&gt;0&lt;/strong&gt;&lt;small&gt;Questions tried&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;&lt;strong id=&quot;best&quot;&gt;0&lt;/strong&gt;&lt;small&gt;Best streak 🔥&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class=&quot;muted&quot; style=&quot;margin-bottom:7px&quot;&gt;Accuracy&lt;/p&gt;&lt;div class=&quot;bar&quot;&gt;&lt;div id=&quot;bar&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class=&quot;muted&quot; id=&quot;accuracy&quot;&gt;Answer questions to track your progress.&lt;/p&gt;&lt;button id=&quot;reset&quot; class=&quot;secondary&quot; style=&quot;width:100%&quot;&gt;↻ Reset progress&lt;/button&gt;&lt;/section&gt;
+&lt;div class=&quot;footer&quot;&gt;Stay curious. Ask questions. Be a scientist! 🌟&lt;/div&gt;
+&lt;/main&gt;
+&lt;script&gt;
+(()=&gt;{&#x27;use strict&#x27;;
+const $=id=&gt;document.getElementById(id);
+const topics={animals:&#x27;Animals &amp; Plants&#x27;,space:&#x27;Space&#x27;,body:&#x27;Human Body&#x27;,matter:&#x27;Matter &amp; Materials&#x27;,earth:&#x27;Earth &amp; Weather&#x27;,physics:&#x27;Forces &amp; Energy&#x27;};
+const bank={
+animals:[
+{q:&#x27;What do most plants need to make their own food?&#x27;,o:[&#x27;Sunlight&#x27;,&#x27;Plastic&#x27;,&#x27;Moonlight only&#x27;,&#x27;Sand only&#x27;],a:0,e:&#x27;Plants use sunlight, water and carbon dioxide to make food through photosynthesis.&#x27;},
+{q:&#x27;Which animal is a mammal?&#x27;,o:[&#x27;Frog&#x27;,&#x27;Dolphin&#x27;,&#x27;Trout&#x27;,&#x27;Butterfly&#x27;],a:1,e:&#x27;Dolphins are mammals: they breathe air, are warm-blooded and feed milk to their young.&#x27;},
+{q:&#x27;What is the main job of a plant root?&#x27;,o:[&#x27;Catch insects&#x27;,&#x27;Absorb water and hold the plant&#x27;,&#x27;Make seeds fly&#x27;,&#x27;Make sunlight&#x27;],a:1,e:&#x27;Roots take in water and minerals and help anchor the plant in the soil.&#x27;},
+{q:&#x27;What do bees help many flowering plants do?&#x27;,o:[&#x27;Pollinate&#x27;,&#x27;Make rain&#x27;,&#x27;Grow roots&#x27;,&#x27;Make rocks&#x27;],a:0,e:&#x27;Bees carry pollen between flowers, helping many plants produce seeds.&#x27;},
+{q:&#x27;Which is a producer in a food chain?&#x27;,o:[&#x27;Grass&#x27;,&#x27;Hawk&#x27;,&#x27;Mushroom&#x27;,&#x27;Fox&#x27;],a:0,e:&#x27;Plants make their own food, so they are called producers.&#x27;},
+{q:&#x27;What is an adaptation?&#x27;,o:[&#x27;A feature that helps an organism survive&#x27;,&#x27;A kind of rock&#x27;,&#x27;A weather forecast&#x27;,&#x27;A planet&#x27;],a:0,e:&#x27;Adaptations are features or behaviours that help living things survive in their environments.&#x27;}],
+space:[
+{q:&#x27;Which star is closest to Earth?&#x27;,o:[&#x27;Polaris&#x27;,&#x27;The Sun&#x27;,&#x27;Sirius&#x27;,&#x27;The North Star&#x27;],a:1,e:&#x27;The Sun is our nearest star and provides Earth with light and heat.&#x27;},
+{q:&#x27;What does Earth orbit?&#x27;,o:[&#x27;The Moon&#x27;,&#x27;Mars&#x27;,&#x27;The Sun&#x27;,&#x27;Jupiter&#x27;],a:2,e:&#x27;Earth travels around the Sun once about every year.&#x27;},
+{q:&#x27;What causes day and night on Earth?&#x27;,o:[&#x27;Earth spinning on its axis&#x27;,&#x27;The Sun going around Earth each day&#x27;,&#x27;Clouds moving&#x27;,&#x27;The Moon changing shape&#x27;],a:0,e:&#x27;Earth rotates once about every 24 hours. The side facing the Sun has day.&#x27;},
+{q:&#x27;What is the Moon?&#x27;,o:[&#x27;A star&#x27;,&#x27;A natural satellite of Earth&#x27;,&#x27;A galaxy&#x27;,&#x27;A comet&#x27;],a:1,e:&#x27;The Moon is Earth’s natural satellite. It reflects sunlight.&#x27;},
+{q:&#x27;Which planet is known as the Red Planet?&#x27;,o:[&#x27;Venus&#x27;,&#x27;Mars&#x27;,&#x27;Neptune&#x27;,&#x27;Saturn&#x27;],a:1,e:&#x27;Iron-rich dust gives Mars much of its reddish appearance.&#x27;},
+{q:&#x27;What is a galaxy?&#x27;,o:[&#x27;A group of stars, gas and dust held together by gravity&#x27;,&#x27;A single moon&#x27;,&#x27;A kind of cloud&#x27;,&#x27;A planet’s ring&#x27;],a:0,e:&#x27;A galaxy contains stars, star systems, gas, dust and dark matter bound by gravity.&#x27;}],
+body:[
+{q:&#x27;Which organ pumps blood around your body?&#x27;,o:[&#x27;Lungs&#x27;,&#x27;Heart&#x27;,&#x27;Stomach&#x27;,&#x27;Brain&#x27;],a:1,e:&#x27;The heart pumps blood through blood vessels to carry oxygen and nutrients around the body.&#x27;},
+{q:&#x27;What do your lungs help you do?&#x27;,o:[&#x27;Digest food&#x27;,&#x27;Breathe and exchange gases&#x27;,&#x27;Hear sounds&#x27;,&#x27;Move bones&#x27;],a:1,e:&#x27;Your lungs take oxygen into the body and remove carbon dioxide.&#x27;},
+{q:&#x27;Which part of your body helps you think and remember?&#x27;,o:[&#x27;Brain&#x27;,&#x27;Knee&#x27;,&#x27;Skin&#x27;,&#x27;Tooth&#x27;],a:0,e:&#x27;The brain helps control your body, process information and form memories.&#x27;},
+{q:&#x27;Where does much of the digestion and nutrient absorption happen?&#x27;,o:[&#x27;Small intestine&#x27;,&#x27;Hair&#x27;,&#x27;Lungs&#x27;,&#x27;Heart&#x27;],a:0,e:&#x27;The small intestine absorbs most nutrients from digested food.&#x27;},
+{q:&#x27;What connects a muscle to a bone?&#x27;,o:[&#x27;Tendon&#x27;,&#x27;Nerve cell only&#x27;,&#x27;Enamel&#x27;,&#x27;Cartilage only&#x27;],a:0,e:&#x27;Tendons connect muscles to bones and help the body move.&#x27;},
+{q:&#x27;What is one important job of the skeleton?&#x27;,o:[&#x27;Protect organs and support the body&#x27;,&#x27;Pump blood&#x27;,&#x27;Make oxygen&#x27;,&#x27;Digest every meal&#x27;],a:0,e:&#x27;Bones support your body, protect organs and work with muscles to help you move.&#x27;}],
+matter:[
+{q:&#x27;Which is a solid?&#x27;,o:[&#x27;Ice cube&#x27;,&#x27;Steam&#x27;,&#x27;Air&#x27;,&#x27;Water vapour&#x27;],a:0,e:&#x27;A solid keeps its own shape. Ice is solid water.&#x27;},
+{q:&#x27;What happens to ice when it melts?&#x27;,o:[&#x27;It becomes liquid water&#x27;,&#x27;It becomes wood&#x27;,&#x27;It vanishes forever&#x27;,&#x27;It turns into metal&#x27;],a:0,e:&#x27;Melting changes a solid into a liquid when enough heat is added.&#x27;},
+{q:&#x27;Which tool measures temperature?&#x27;,o:[&#x27;Thermometer&#x27;,&#x27;Ruler&#x27;,&#x27;Compass&#x27;,&#x27;Balance scale&#x27;],a:0,e:&#x27;A thermometer measures how hot or cold something is.&#x27;},
+{q:&#x27;What is evaporation?&#x27;,o:[&#x27;Liquid changing into gas&#x27;,&#x27;Gas changing into solid&#x27;,&#x27;Solid changing into liquid&#x27;,&#x27;Water becoming soil&#x27;],a:0,e:&#x27;Evaporation happens when particles at a liquid’s surface enter the gas state.&#x27;},
+{q:&#x27;What is a mixture?&#x27;,o:[&#x27;Two or more substances combined&#x27;,&#x27;Only one pure atom&#x27;,&#x27;A type of planet&#x27;,&#x27;A force&#x27;],a:0,e:&#x27;A mixture contains substances combined physically; they may often be separated by physical methods.&#x27;},
+{q:&#x27;Why does a metal spoon often feel colder than a wooden spoon in the same room?&#x27;,o:[&#x27;Metal transfers heat away from your hand faster&#x27;,&#x27;Metal is always below freezing&#x27;,&#x27;Wood makes heat&#x27;,&#x27;Metal has no particles&#x27;],a:0,e:&#x27;Metal is a better thermal conductor than wood, so it moves heat away from your hand faster.&#x27;}],
+earth:[
+{q:&#x27;What do we call water falling from clouds as rain, snow or hail?&#x27;,o:[&#x27;Precipitation&#x27;,&#x27;Evaporation&#x27;,&#x27;Magnetism&#x27;,&#x27;Erosion&#x27;],a:0,e:&#x27;Precipitation is water released from clouds in forms such as rain, snow, sleet or hail.&#x27;},
+{q:&#x27;Which layer of Earth do we live on?&#x27;,o:[&#x27;Crust&#x27;,&#x27;Inner core&#x27;,&#x27;Outer core&#x27;,&#x27;Deep mantle&#x27;],a:0,e:&#x27;The crust is Earth’s thin, solid outer layer.&#x27;},
+{q:&#x27;What causes wind?&#x27;,o:[&#x27;Moving air caused largely by pressure differences&#x27;,&#x27;The Moon shining&#x27;,&#x27;Plants growing&#x27;,&#x27;Ocean salt&#x27;],a:0,e:&#x27;Air moves from areas of higher pressure toward lower pressure, creating wind.&#x27;},
+{q:&#x27;What is the water cycle?&#x27;,o:[&#x27;Water moving between Earth’s surface and the atmosphere&#x27;,&#x27;The movement of rocks only&#x27;,&#x27;A type of eclipse&#x27;,&#x27;The seasons of Mars&#x27;],a:0,e:&#x27;The water cycle includes evaporation, condensation, precipitation and collection.&#x27;},
+{q:&#x27;What is erosion?&#x27;,o:[&#x27;Rock and soil being worn away and moved&#x27;,&#x27;Clouds making light&#x27;,&#x27;Water freezing only&#x27;,&#x27;A planet spinning&#x27;],a:0,e:&#x27;Erosion moves rock and soil by water, wind, ice or gravity.&#x27;},
+{q:&#x27;What is one major cause of the seasons?&#x27;,o:[&#x27;Earth’s tilted axis as it orbits the Sun&#x27;,&#x27;Earth being much closer to the Sun in summer everywhere&#x27;,&#x27;The Moon blocking the Sun&#x27;,&#x27;Daily clouds&#x27;],a:0,e:&#x27;Earth’s tilt changes the angle and duration of sunlight each hemisphere receives during the year.&#x27;}],
+physics:[
+{q:&#x27;What force pulls objects toward Earth?&#x27;,o:[&#x27;Gravity&#x27;,&#x27;Sound&#x27;,&#x27;Magnetism only&#x27;,&#x27;Light&#x27;],a:0,e:&#x27;Gravity attracts objects with mass toward one another. Earth’s gravity pulls us toward the ground.&#x27;},
+{q:&#x27;Which object is attracted to a magnet?&#x27;,o:[&#x27;Iron nail&#x27;,&#x27;Paper cup&#x27;,&#x27;Rubber band&#x27;,&#x27;Wooden spoon&#x27;],a:0,e:&#x27;Iron and some other metals, including steel, are attracted to magnets.&#x27;},
+{q:&#x27;What is a force?&#x27;,o:[&#x27;A push or pull&#x27;,&#x27;A kind of animal&#x27;,&#x27;A planet&#x27;,&#x27;A unit of temperature&#x27;],a:0,e:&#x27;A force is a push or pull that can change an object’s motion or shape.&#x27;},
+{q:&#x27;Which is a source of renewable energy?&#x27;,o:[&#x27;Sunlight&#x27;,&#x27;Coal&#x27;,&#x27;Petroleum&#x27;,&#x27;Natural gas&#x27;],a:0,e:&#x27;Solar energy comes from sunlight and is naturally replenished.&#x27;},
+{q:&#x27;What happens to sound when you strike a drum?&#x27;,o:[&#x27;The drum vibrates and makes sound waves&#x27;,&#x27;The drum creates gravity&#x27;,&#x27;The air disappears&#x27;,&#x27;Light turns into water&#x27;],a:0,e:&#x27;Vibrations make sound waves that travel through materials such as air.&#x27;},
+{q:&#x27;In a simple circuit, what does a battery provide?&#x27;,o:[&#x27;Electrical energy&#x27;,&#x27;Water&#x27;,&#x27;Fuel for digestion&#x27;,&#x27;Magnetic north&#x27;],a:0,e:&#x27;A battery provides energy that can drive electric current around a complete circuit.&#x27;}]
+};
+let topic=&#x27;animals&#x27;,idx=0,correct=0,total=0,streak=0,best=0,answered=false,current=null;
+function getQuestion(){let g=+$(&#x27;grade&#x27;).value;let list=bank[topic];let pool=list.slice(0,Math.min(list.length,Math.max(2,g)));current=pool[Math.floor(Math.random()*pool.length)];idx++;answered=false;$(&#x27;badge&#x27;).textContent=topics[topic];$(&#x27;question&#x27;).textContent=current.q;$(&#x27;options&#x27;).innerHTML=&#x27;&#x27;;$(&#x27;feedback&#x27;).className=&#x27;feedback&#x27;;$(&#x27;feedback&#x27;).textContent=&#x27;&#x27;;$(&#x27;fact&#x27;).classList.add(&#x27;hidden&#x27;);$(&#x27;hintbox&#x27;).className=&#x27;feedback&#x27;;$(&#x27;hintbox&#x27;).textContent=&#x27;&#x27;;current.o.forEach((option,i)=&gt;{let b=document.createElement(&#x27;button&#x27;);b.textContent=String.fromCharCode(65+i)+&#x27;. &#x27;+option;b.addEventListener(&#x27;click&#x27;,()=&gt;check(i,b));$(&#x27;options&#x27;).appendChild(b)});}
+function check(i,btn){if(answered)return;answered=true;total++;const buttons=$(&#x27;options&#x27;).querySelectorAll(&#x27;button&#x27;);buttons.forEach((b,j)=&gt;{b.disabled=true;if(j===current.a){b.style.borderColor=&#x27;#19935e&#x27;;b.style.background=&#x27;#e4f8ec&#x27;} });if(i===current.a){correct++;streak++;best=Math.max(best,streak);$(&#x27;feedback&#x27;).className=&#x27;feedback good&#x27;;$(&#x27;feedback&#x27;).textContent=&#x27;🎉 Correct! Great science thinking!&#x27;}else{streak=0;$(&#x27;feedback&#x27;).className=&#x27;feedback bad&#x27;;$(&#x27;feedback&#x27;).textContent=&#x27;Good try! The correct answer is &#x27;+String.fromCharCode(65+current.a)+&#x27;. &#x27;+current.o[current.a]+&#x27;.&#x27;;btn.style.borderColor=&#x27;#d98c42&#x27;}if($(&#x27;difficulty&#x27;).value===&#x27;learn&#x27;){$(&#x27;fact&#x27;).classList.remove(&#x27;hidden&#x27;);$(&#x27;fact&#x27;).innerHTML=&#x27;&lt;strong&gt;🔎 Learn more&lt;/strong&gt;&lt;br&gt;&#x27;+current.e}else{$(&#x27;fact&#x27;).classList.remove(&#x27;hidden&#x27;);$(&#x27;fact&#x27;).textContent=&#x27;Explanation: &#x27;+current.e}stats()}
+function stats(){ $(&#x27;correct&#x27;).textContent=correct;$(&#x27;total&#x27;).textContent=total;$(&#x27;best&#x27;).textContent=best;let pct=total?Math.round(correct/total*100):0;$(&#x27;bar&#x27;).style.width=pct+&#x27;%&#x27;;$(&#x27;accuracy&#x27;).textContent=total?pct+&#x27;% accuracy. &#x27;+(pct&gt;=80?&#x27;Excellent work, scientist!&#x27;:&#x27;Keep exploring and learning!&#x27;):&#x27;Answer questions to track your progress.&#x27;}
+$(&#x27;topics&#x27;).querySelectorAll(&#x27;[data-topic]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;{topic=b.dataset.topic;$(&#x27;topics&#x27;).querySelectorAll(&#x27;button&#x27;).forEach(x=&gt;x.classList.toggle(&#x27;active&#x27;,x===b));getQuestion()}));
+$(&#x27;grade&#x27;).addEventListener(&#x27;change&#x27;,getQuestion);$(&#x27;difficulty&#x27;).addEventListener(&#x27;change&#x27;,()=&gt;{if(current&amp;&amp;answered){$(&#x27;fact&#x27;).classList.remove(&#x27;hidden&#x27;);$(&#x27;fact&#x27;).textContent=current.e}});$(&#x27;next&#x27;).addEventListener(&#x27;click&#x27;,getQuestion);
+$(&#x27;hint&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{$(&#x27;hintbox&#x27;).className=&#x27;feedback good&#x27;;$(&#x27;hintbox&#x27;).textContent=&#x27;💡 Hint: &#x27;+current.e.split(&#x27;.&#x27;)[0]+&#x27;.&#x27;});
+$(&#x27;reset&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{correct=0;total=0;streak=0;best=0;stats();getQuestion()});
+getQuestion();stats();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+    </section>
+</main>
+<footer>My School Learning Hub · Grades 1–6 · Opens locally in your browser</footer>
+<script>
+function showSubject(key){
+  document.querySelectorAll('.subject-frame').forEach(section=>section.hidden=section.id!=='section-'+key);
+  document.querySelectorAll('.subject-btn').forEach(button=>{
+    const active=button.dataset.subject===key;
+    button.classList.toggle('active',active);
+    button.setAttribute('aria-selected',active?'true':'false');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openSubject(key){
+  showSubject(key);
+  const section=document.getElementById('section-'+key);
+  const frame=section.querySelector('iframe');
+  if(frame.requestFullscreen){frame.requestFullscreen().catch(()=>{});}
+  else {section.scrollIntoView({behavior:'smooth'});}
+}
+showSubject('language');
+</script>
+</body>
+</html>
